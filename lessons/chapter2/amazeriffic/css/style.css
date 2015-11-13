@@ -5,18 +5,18 @@ body {
 
 header, main, footer {
 	min-width: 855px;
+	margin: -10px;
+	padding: 30px;
 }
 
 header .conteiner, main .conteiner, footer .conteiner {
 	max-width:855px;
-	margin: auto;
+
 }
 
 header {
 	background: white;
 	overflow:auto;
-	margin: -10px;
-	padding: 10px;
 }
 
 header h1 {
@@ -30,10 +30,9 @@ header nav {
 }
 
 main {
+	border-top: 1px dotted black;
 	background: white;
 	overflow: auto;
-	margin: -10px;
-	padding: 10px;
 }
 
 .about {
@@ -58,6 +57,7 @@ main {
 
 h1, h2, h3, h4 {
 	font-family: "Ubuntu", sans-serif;
+	font-size: xxlarger;
 }
 
 a {
@@ -75,8 +75,16 @@ a:hover {
 }
 
 .menu ul {
+	min-width: 150px;
+	max-width: 150px;
 	padding:0px;
 	margin:0px;
 	list-style:none;				
 }
 
+.menu1 {
+	float:left;
+}
+.menu2 {
+	float:right;
+}
