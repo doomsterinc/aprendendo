@@ -1,5 +1,6 @@
 body {
 	background: #f9e993;
+	font-family: "Droid Sans", sans-serif;
 }
 
 header, main, footer {
@@ -14,6 +15,8 @@ header .conteiner, main .conteiner, footer .conteiner {
 header {
 	background: white;
 	overflow:auto;
+	margin: -10px;
+	padding: 10px;
 }
 
 header h1 {
@@ -29,6 +32,8 @@ header nav {
 main {
 	background: white;
 	overflow: auto;
+	margin: -10px;
+	padding: 10px;
 }
 
 .about {
@@ -50,3 +55,28 @@ main {
 	float: right;
 	width: 285px;
 }
+
+h1, h2, h3, h4 {
+	font-family: "Ubuntu", sans-serif;
+}
+
+a {
+	color: cornflowerblue;
+	text-decoration: none;
+}
+
+a:visited {
+	color: tomato;
+}
+
+a:hover {
+	color: blue;
+	text-decoration:none;
+}
+
+.menu ul {
+	padding:0px;
+	margin:0px;
+	list-style:none;				
+}
+
