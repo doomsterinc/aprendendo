@@ -1,4 +1,26 @@
-* {
-	margin: 0;
-	padding: 0;
+
+header, main, footer {
+	min-width: 855px;
+}
+
+header .conteiner, main .conteiner, footer .conteiner {
+	max-width:855px;
+}
+
+header {
+	overflow:auto;
+	border-bottom: 1px dotted black;
+}
+
+.titulo {
+	float: left;
+	width:280px;
+
+}
+
+.titulo2 {
+	float: right;
+	width:570px;
+	padding-top: 8px;
+
 }
