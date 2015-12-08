@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.unarin.cordova.proximity.quickstart" version="1.0.1" xmlns="http://www.w3.org/ns/widgets">
-    <name>Cordova Proximity Quickstart</name>
+<widget id="com.doom.cordova.proximity.quickstart" version="1.0.1" xmlns="http://www.w3.org/ns/widgets">
+    <name> Proximity </name>
     <description>
         An Ionic Framework and Cordova project demonstrating proximity tasks.
     </description>
-    <author email="peter.metz@unarin.com" href="http://unarin.com/">
-        Peter Metz
+    <author email="doomsterinc1@gmail.com" href="http://doom.com/">
+        Doom Inc Developer
     </author>
 
     <content src="index.html"/>
