@@ -28,4 +28,8 @@ angular.module("myApp", []).controller("userCtrl", function($scope) {
 			$scope.lName = $scope.users[id-1].lName; 
 		}
 	};
+	$scope.$watch('passw1', function() {$scope.test();});
+	$scope.$watch('passw2', function() {$scope.test();});
+	$scope.$watch('fName', function() {$scope.test();});
+	$scope.$watch('lName', function() {$scope.test();});
 });
