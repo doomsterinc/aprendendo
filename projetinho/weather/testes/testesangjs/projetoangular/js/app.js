@@ -16,4 +16,15 @@ angular
 				{nome: "João", telefone : "99889988" }
 
 			];
+
+			$scope.operadoras = [
+				{nome : "OI", codigo: 14},
+				{nome : "VIVO", codigo: 15},
+				{nome : "TIM", codigo: 41}
+			];
+
+			$scope.adicionarContato = function (contato) {
+				$scope.contatos.push(angular.copy(contato));
+				delete $scope.contato;
+			};
 	});

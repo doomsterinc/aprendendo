@@ -16,3 +16,6 @@ h5 {
 .form-control {
 	margin-bottom: 5px;
 }
+select {
+	margin-bottom: 10px;
+}
