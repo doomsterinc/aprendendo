@@ -1,5 +1,5 @@
 angular
-	.module("myApp", [])
-	.controller('myCtrl', function($scope) {
+	.module("listaTelefonica", [])
+	.controller('listaTelefonicaCtrl', function($scope) {
 			
 	});
