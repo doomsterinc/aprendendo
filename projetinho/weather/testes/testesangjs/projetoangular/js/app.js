@@ -13,7 +13,7 @@ angular
 				{nome: "Sergio", telefone : "99889988" },
 				{nome: "Augusto", telefone : "99889988" },
 				{nome: "Pedro", telefone : "99889988" },
-				{nome: "Jaoa", telefone : "99889988" }
+				{nome: "João", telefone : "99889988" }
 
 			];
 	});
