@@ -14,14 +14,16 @@ angular
 				{nome: "Sergio", telefone : "99889988" },
 				{nome: "Augusto", telefone : "99889988" },
 				{nome: "Pedro", telefone : "99889988" },
-				{nome: "João", telefone : "99889988" }
+				{nome: "Joao", telefone : "99889988" }
 
 			];
 
 			$scope.operadoras = [
-				{nome : "OI", codigo: 14},
-				{nome : "VIVO", codigo: 15},
-				{nome : "TIM", codigo: 41}
+				{nome : "OI", codigo: 14, categoria: "Celular"},
+				{nome : "VIVO", codigo: 15, categoria: "Celular"},
+				{nome : "TIM", codigo: 41, categoria: "Celular"},
+				{nome : "GVT", codigo: 25, categoria: "Fixo"},
+				{nome : "EMBRATEL", codigo: 21, categoria: "Fixo"}
 			];
 
 			$scope.adicionarContato = function (contato) {
