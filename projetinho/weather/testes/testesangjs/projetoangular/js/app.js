@@ -2,6 +2,7 @@ angular
 	.module("listaTelefonica", [])
 	.controller('listaTelefonicaCtrl', function($scope) {
 			$scope.app = "Lista Telefonica";
+			
 			$scope.contatos = [
 				{nome: "Paulo", telefone : "99889988" },
 				{nome: "Henrique", telefone : "99889988" },
