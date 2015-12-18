@@ -30,4 +30,8 @@ angular
 				$scope.contatos.push(angular.copy(contato));
 				delete $scope.contato;
 			};
+
+			$scope.classe1 = "selecionado";
+			$scope.classe2 = "negrito";
+
 	});

@@ -6,16 +6,28 @@
 	margin-right: auto;
 	margin-top: 20px;
 }
+
 .table {
 	margin-top: 20px;
 }
+
 h5 {
 	text-align: left;
 	margin-left: 10px;
 }
+
 .form-control {
 	margin-bottom: 5px;
 }
+
 select {
 	margin-bottom: 10px;
+}
+
+.selecionado {
+	background-color: gray;
+}
+
+.negrito {
+	font-weight: bold;
 }
