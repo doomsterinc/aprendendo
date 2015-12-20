@@ -1,0 +1,98 @@
+body {
+	background: #f9e993;
+	font-family: "Droid Sans", sans-serif;
+}
+
+header, main, footer {
+	min-width: 855px;
+	margin: -10px;
+	padding: 30px;
+}
+
+header .conteiner, main .conteiner, footer .conteiner {
+	max-width:855px;
+
+}
+
+header {
+	background: white;
+	overflow:auto;
+}
+
+header h1 {
+	float:left;
+	width: 570px;
+}
+
+header nav {
+	float:right;
+	width:280px;
+}
+
+main {
+	border-top: 1px dotted black;
+	background: white;
+	overflow: auto;
+}
+
+.tabs a span {
+	display: inline-block;
+	border-radius: 5px 5px 0 0;
+	width: 100px;
+	margin-right: 10px;
+	text-align: center;
+	background: #ddd;
+	padding: 5px;
+}
+
+.tabs a span.active {
+	background: #eee;
+}
+
+.in {
+	margin-top:5px;
+}
+
+.contact {
+	float: left;
+	width: 570px;
+}
+
+.sitemap {
+	float: right;
+	width: 285px;
+}
+
+h1, h2, h3, h4 {
+	font-family: "Ubuntu", sans-serif;
+	font-size: xxlarger;
+}
+
+a {
+	color: cornflowerblue;
+	text-decoration: none;
+}
+
+a:visited {
+	color: tomato;
+}
+
+a:hover {
+	color: blue;
+	text-decoration:none;
+}
+
+.menu ul {
+	min-width: 150px;
+	max-width: 150px;
+	padding:0px;
+	margin:0px;
+	list-style:none;				
+}
+
+.menu1 {
+	float:left;
+}
+.menu2 {
+	float:right;
+}
