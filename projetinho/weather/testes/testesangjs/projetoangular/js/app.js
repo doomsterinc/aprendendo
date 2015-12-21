@@ -1,5 +1,5 @@
 angular
-	.module("listaTelefonica", [])
+	.module("listaTelefonica", ["ngMessages"])
 	.controller('listaTelefonicaCtrl', function($scope) {
 			$scope.app = "Lista Telefonica";
 			
