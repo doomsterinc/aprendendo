@@ -34,4 +34,8 @@ angular
 			$scope.classe1 = "selecionado";
 			$scope.classe2 = "negrito";
 
+			$scope.removerContato = function (contatos) {
+				console.log(contatos);
+			};
+
 	});
