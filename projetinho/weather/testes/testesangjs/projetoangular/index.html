@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="listaTelefonica">
 <head>
-	<meta xharset = "UTF-8">
+	<meta charset = "UTF-8">
 	<title>Lista Telefonica</title>
 	<script src="lib/angular.js"></script>
 	<script src="js/app.js"></script>
@@ -12,6 +12,7 @@
 <body ng-controller="listaTelefonicaCtrl">
 	<div class="jumbotron">
 		<h3>{{app}}</h3>
+		<input type="text" ng-model = "buscador" class= "form-control" placeholder = "O que você esta buscando?">
 		<table class="table" ng-if="contatos.length > 0">
 			<tr>
 				<th> </th>
@@ -20,7 +21,7 @@
 				<th>Operadora</th>
 				<th></th>
 			</tr>
-			<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos">
+			<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: buscador">
 				<td><input type="checkbox" ng-model = "contato.selecionado"/></td>
 				<td>{{contato.nome}}</td>
 				<td>{{contato.telefone}}</td>
