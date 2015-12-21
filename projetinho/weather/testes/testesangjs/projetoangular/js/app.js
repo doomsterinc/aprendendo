@@ -19,11 +19,11 @@ angular
 			];
 
 			$scope.operadoras = [
-				{nome : "OI", codigo: 14, categoria: "Celular"},
-				{nome : "VIVO", codigo: 15, categoria: "Celular"},
-				{nome : "TIM", codigo: 41, categoria: "Celular"},
-				{nome : "GVT", codigo: 25, categoria: "Fixo"},
-				{nome : "EMBRATEL", codigo: 21, categoria: "Fixo"}
+				{nome : "OI", codigo: 14, categoria: "Celular", preco: 2},
+				{nome : "VIVO", codigo: 15, categoria: "Celular", preco: 3},
+				{nome : "TIM", codigo: 41, categoria: "Celular", preco: 1},
+				{nome : "GVT", codigo: 25, categoria: "Fixo", preco: 5},
+				{nome : "EMBRATEL", codigo: 21, categoria: "Fixo", preco: 4}
 			];
 
 			$scope.adicionarContato = function (contato) {
