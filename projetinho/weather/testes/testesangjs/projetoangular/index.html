@@ -16,12 +16,14 @@
 			<th>Name</th>
 			<th>Contato</th>
 			<th>Operadora</th>
+			<th></th>
 		</tr>
 		<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos">
 			<td><input type="checkbox" ng-model = "contato.selecionado"/></td>
 			<td>{{contato.nome}}</td>
 			<td>{{contato.telefone}}</td>
 			<td>{{contato.operadora.nome}}</td>
+			<td><div class="cores" ng-style="{'background-color': contato.cor}"></div></td>
 		</tr>
 		</table>
 		<hr/>
@@ -32,7 +34,7 @@
 			<option value="">Selecione uma operadora!</option>
 		</select>
 		<button class = "btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button>
-		<button class = "btn btn-danger btn-block" ng-click="removerContatos(contatos)">Remover Contato</button>
+		<button class = "btn btn-danger btn-block" ng-click="removerContatos(contatos)" ng-disabled="!isContatoSelecionado(contatos)">Remover Contato</button>
 	</div>
 </body>
 </html>
