@@ -35,7 +35,10 @@ angular
 			$scope.classe2 = "negrito";
 
 			$scope.removerContato = function (contato) {
-				console.log(contato);
+				$scope.contatos = contato.filter(function (contato) {
+					if (!contato.selecionado) return contato;
+				});
+			
 			};
 
 	});
