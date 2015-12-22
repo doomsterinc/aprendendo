@@ -1,0 +1,57 @@
+[
+	{
+		"nome": "Paulo", 
+		"telefone" : "99889988", 
+		"cor": "blue",
+		"operadora": {
+			"nome" : "VIVO", 
+			"codigo": 15, 
+			"categoria": "Celular", 
+			"preco": 3
+		} 
+	},
+		{
+		"nome": "Paulo", 
+		"telefone" : "99889988", 
+		"cor": "blue",
+		"operadora": {
+			"nome" : "VIVO", 
+			"codigo": 15, 
+			"categoria": "Celular", 
+			"preco": 3
+		} 
+	},
+		{
+		"nome": "Paulo", 
+		"telefone" : "99889988", 
+		"cor": "blue",
+		"operadora": {
+			"nome" : "VIVO", 
+			"codigo": 15, 
+			"categoria": "Celular", 
+			"preco": 3
+		} 
+	},
+		{
+		"nome": "Paulo", 
+		"telefone" : "99889988", 
+		"cor": "blue",
+		"operadora": {
+			"nome" : "VIVO", 
+			"codigo": 15, 
+			"categoria": "Celular", 
+			"preco": 3
+		} 
+	},
+		{
+		"nome": "Paulo", 
+		"telefone" : "99889988", 
+		"cor": "blue",
+		"operadora": {
+			"nome" : "VIVO", 
+			"codigo": 15, 
+			"categoria": "Celular", 
+			"preco": 3
+		} 
+	},
+]

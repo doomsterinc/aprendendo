@@ -2,7 +2,7 @@ var fs = require('fs');
 var http = require('http');
 var url = require('url');
 
-var root = './testesangjs/projetoangular/';
+var root = './';
 
 var server  = http.createServer(function (request, response){
 	var requestObj = url.parse(request.url, true);
