@@ -13,7 +13,11 @@ angular
 				{nome : "EMBRATEL", codigo: 21, categoria: "Fixo", preco: 4}
 			];
 
-
+			var carregarContatos = function(){
+				$http.get('http://localhost:3412/contatos').success(function(data,status){
+					console.log(data);
+				});
+			};
 
 			$scope.adicionarContato = function (contato) {
 				$scope.contatos.push(angular.copy(contato));
@@ -41,4 +45,5 @@ angular
 				$scope.criterioDeOrdenacao = campo;
 				$scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
 			};
+			carregarContatos();
 	});

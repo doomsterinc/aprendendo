@@ -11,7 +11,7 @@
 		} 
 	},
 		{
-		"nome": "Paulo", 
+		"nome": "Doom", 
 		"telefone" : "99889988", 
 		"cor": "blue",
 		"operadora": {
@@ -22,7 +22,7 @@
 		} 
 	},
 		{
-		"nome": "Paulo", 
+		"nome": "Abbath", 
 		"telefone" : "99889988", 
 		"cor": "blue",
 		"operadora": {
@@ -33,7 +33,7 @@
 		} 
 	},
 		{
-		"nome": "Paulo", 
+		"nome": "John", 
 		"telefone" : "99889988", 
 		"cor": "blue",
 		"operadora": {
@@ -44,7 +44,7 @@
 		} 
 	},
 		{
-		"nome": "Paulo", 
+		"nome": "Henrique", 
 		"telefone" : "99889988", 
 		"cor": "blue",
 		"operadora": {
@@ -53,5 +53,5 @@
 			"categoria": "Celular", 
 			"preco": 3
 		} 
-	},
+	}
 ]
