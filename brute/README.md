@@ -1,6 +1,4 @@
-# BruteX v1.2 by 1N3 @ CrowdShield
-# https://crowdshield.com
-#
+# BruteX v1.2 
 
 Automatically brute force all services running on a target including:
 
