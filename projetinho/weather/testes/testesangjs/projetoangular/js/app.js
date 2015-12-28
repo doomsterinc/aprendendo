@@ -5,24 +5,27 @@ angular
 			
 			$scope.contatos = [];
 
-			$scope.operadoras = [
-				{nome : "OI", codigo: 14, categoria: "Celular", preco: 2},
-				{nome : "VIVO", codigo: 15, categoria: "Celular", preco: 3},
-				{nome : "TIM", codigo: 41, categoria: "Celular", preco: 1},
-				{nome : "GVT", codigo: 25, categoria: "Fixo", preco: 5},
-				{nome : "EMBRATEL", codigo: 21, categoria: "Fixo", preco: 4}
-			];
+			$scope.operadoras = [];
 
 			var carregarContatos = function(){
 				$http.get('http://localhost:3412/contatos').success(function(data,status){
-					console.log(data);
+					$scope.contatos = data;
+				});
+			};
+
+			var carregarOperadoras = function(){
+				$http.get('http://localhost:3412/operadoras').success(function(data,status){
+					$scope.operadoras = data;
 				});
 			};
 
 			$scope.adicionarContato = function (contato) {
-				$scope.contatos.push(angular.copy(contato));
-				delete $scope.contato;
-				$scope.contatoForm.$setPristine();
+				contato.data = new Date();
+				$http.post('http://localhost:3412/contatos', contato).success(function(data){
+					delete $scope.contato;
+					$scope.contatoForm.$setPristine();
+					carregarContatos();
+				});
 
 			};
 
@@ -46,4 +49,8 @@ angular
 				$scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
 			};
 			carregarContatos();
+			carregarOperadoras();
 	});
+
+delete $scope.contato;
+				$scope.contatoForm.$setPristine();
