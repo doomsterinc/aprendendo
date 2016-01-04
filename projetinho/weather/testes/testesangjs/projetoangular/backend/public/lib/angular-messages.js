@@ -6,7 +6,6 @@
 (function(window, angular, undefined) {'use strict';
 
 /* jshint ignore:start */
-// this code is in the core, but not in angular-messages.js
 var isArray = angular.isArray;
 var forEach = angular.forEach;
 var isString = angular.isString;
