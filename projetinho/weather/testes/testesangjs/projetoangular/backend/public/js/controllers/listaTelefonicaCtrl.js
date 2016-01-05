@@ -1,6 +1,6 @@
 angular
 	.module("listaTelefonica", ["ngMessages"])
-	.controller('listaTelefonicaCtrl', function($scope, contatosAPI, operadorasAPI) {
+	.controller('listaTelefonicaCtrl', function($scope, contatosAPI, operadorasAPI, serialGenerate) {
 			$scope.app = "Lista Telefonica";
 			
 			$scope.contatos = [];
@@ -20,8 +20,9 @@ angular
 			};
 
 			$scope.adicionarContato = function (contato) {
+				contato.serial = serialGenerate.generate();
 				contato.data = new Date();
-				contatosAPI.saveContato(contato).success(function(data){
+				contatosAPI.saveContatos(contato).success(function(data){
 					delete $scope.contato;
 					$scope.contatoForm.$setPristine();
 					carregarContatos();
