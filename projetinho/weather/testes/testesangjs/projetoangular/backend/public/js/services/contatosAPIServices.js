@@ -5,8 +5,12 @@ angular
 			return $http.get('http://localhost:3412/contatos');
 		};
 
-		return {
-			getContatos: _getContatos
+		var _saveContatos = function (contato) {
+			return $http.post('http://localhost:3412/contatos',contato);
 		};
 
+		return {
+			getContatos: _getContatos,
+			saveContatos: _saveContatos
+		};
 	});
