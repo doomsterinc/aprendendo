@@ -10,6 +10,7 @@
 	<script src="js/services/operadorasAPIServices.js"></script>
 	<script src="js/values/configValue.js"></script>
 	<script src="js/services/serialGenerateService.js"></script>
+	<script src="js/filters/nameFilter.js"></script>
 	<script src="lib/angular-messages.js"></script>
 	<script src="lib/angular-locale_fr-fr.js"></script>
 	<script src="lib/angular-locale_pt-br.js"></script>
@@ -31,7 +32,7 @@
 			<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: buscador | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao ">
 				<td>{{contato.serial}}</td>
 				<td><input type="checkbox" ng-model = "contato.selecionado"/></td>
-				<td>{{contato.nome}}</td>
+				<td>{{contato.nome | name}}</td>
 				<td>{{contato.telefone}}</td>
 				<td>{{contato.operadora.nome}}</td>
 			</tr>
