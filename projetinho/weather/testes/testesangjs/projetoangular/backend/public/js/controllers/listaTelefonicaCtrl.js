@@ -1,6 +1,6 @@
 angular
 	.module("listaTelefonica", ["ngMessages"])
-	.controller('listaTelefonicaCtrl', function($scope, $http, contatosAPI, operadorasAPI) {
+	.controller('listaTelefonicaCtrl', function($scope, contatosAPI, operadorasAPI) {
 			$scope.app = "Lista Telefonica";
 			
 			$scope.contatos = [];
@@ -21,7 +21,7 @@ angular
 
 			$scope.adicionarContato = function (contato) {
 				contato.data = new Date();
-				$http.post('http://localhost:3412/contatos', contato).success(function(data){
+				contatosAPI.saveContato(contato).success(function(data){
 					delete $scope.contato;
 					$scope.contatoForm.$setPristine();
 					carregarContatos();
