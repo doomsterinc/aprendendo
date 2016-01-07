@@ -9,7 +9,12 @@ angular
 
 			var carregarContatos = function(){
 				contatosAPI.getContatos().success(function(data,status){
+					data.forEach(function (item) {
+							item.serial = serialGenerate.generate();
+					});
 					$scope.contatos = data;
+				}).error(function(data,status){
+					$scope.error = "Nao foi possivel carregar os dados!";
 				});
 			};
 

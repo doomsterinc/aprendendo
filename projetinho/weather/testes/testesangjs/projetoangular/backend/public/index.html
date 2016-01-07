@@ -12,15 +12,20 @@
 	<script src="js/services/serialGenerateService.js"></script>
 	<script src="js/filters/nameFilter.js"></script>
 	<script src="js/filters/ellipsisFilter.js"></script>
+	<script src="js/directives/uiAlertDirective.js"></script>
 	<script src="lib/angular-messages.js"></script>
 	<script src="lib/angular-locale_fr-fr.js"></script>
 	<script src="lib/angular-locale_pt-br.js"></script>
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/ui.css">
 </head>
 <body ng-controller="listaTelefonicaCtrl">
 	<div class="jumbotron">
 		<h3>{{app}}</h3>
+		<div ui-alert title="Ops! Aconteceu um problema!">
+			{{error}}
+		</div>
 		<input type="text" ng-model = "buscador" class= "form-control" placeholder = "O que você esta buscando?">
 		<table class="table" ng-if="contatos.length > 0">
 			<tr>
