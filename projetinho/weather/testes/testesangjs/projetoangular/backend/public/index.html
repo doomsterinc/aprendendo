@@ -11,6 +11,7 @@
 	<script src="js/values/configValue.js"></script>
 	<script src="js/services/serialGenerateService.js"></script>
 	<script src="js/filters/nameFilter.js"></script>
+	<script src="js/filters/ellipsisFilter.js"></script>
 	<script src="lib/angular-messages.js"></script>
 	<script src="lib/angular-locale_fr-fr.js"></script>
 	<script src="lib/angular-locale_pt-br.js"></script>
@@ -23,16 +24,14 @@
 		<input type="text" ng-model = "buscador" class= "form-control" placeholder = "O que você esta buscando?">
 		<table class="table" ng-if="contatos.length > 0">
 			<tr>
-				<th>Serial</th>
 				<th></th>
 				<th><a href="" ng-click="ordenarPor('nome')">Name</th>
 				<th><a href="" ng-click="ordenarPor('telefone')">Contato</th>
 				<th><a href="" ng-click="ordenarPor('Operadora')">Operadora</th>
 			</tr>
 			<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: buscador | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao ">
-				<td>{{contato.serial}}</td>
 				<td><input type="checkbox" ng-model = "contato.selecionado"/></td>
-				<td>{{contato.nome | name}}</td>
+				<td>{{contato.nome | name | ellipsis:8}}</td>
 				<td>{{contato.telefone}}</td>
 				<td>{{contato.operadora.nome}}</td>
 			</tr>
