@@ -14,6 +14,7 @@
 	<script src="js/filters/ellipsisFilter.js"></script>
 	<script src="js/filters/dateFilter.js"></script>
 	<script src="js/directives/uiAlertDirective.js"></script>
+	<script src="js/directives/uiDateDirective.js"></script>
 	<script src="lib/angular-messages.js"></script>
 	<script src="lib/angular-locale_fr-fr.js"></script>
 	<script src="lib/angular-locale_pt-br.js"></script>
@@ -49,7 +50,7 @@
 		<form name="contatoForm">
 			<input class="form-control" type="text" ng-model = "contato.nome" name="nome" placeholder = "Nome" ng-required = "true" ng-minlength = "5">
 			<input class="form-control" type="number" ng-model = "contato.telefone" name="telefone" placeholder = "Telefone" ng-required = "true" ng-pattern = "/^\d{8}$/">
-			<input class="form-control" type="text" ng-model = "contato.data" name="data" placeholder = "Data" ui-date>
+			<input class="form-control" type="text" ng-model = "contato.data" name="data" placeholder = "Data" ui-date/>
 			<select class="form-control" ng-model = "contato.operadora" ng-options="operadora.nome + ' ( ' + (operadora.preco | currency) + ' ) ' group by operadora.categoria for operadora in operadoras">
 				<option value="">Selecione uma operadora!</option>
 			</select>
