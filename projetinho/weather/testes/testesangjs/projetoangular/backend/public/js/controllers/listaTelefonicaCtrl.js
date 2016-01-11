@@ -1,5 +1,5 @@
 angular
-	.module("listaTelefonica", ["ngMessages"])
+	.module("listaTelefonica", ["ngMessages", "serialGenerate"])
 	.controller('listaTelefonicaCtrl', function($scope, contatosAPI, operadorasAPI, serialGenerate) {
 			$scope.app = "Lista Telefonica";
 			

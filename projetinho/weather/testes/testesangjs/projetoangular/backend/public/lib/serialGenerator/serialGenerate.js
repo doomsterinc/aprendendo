@@ -1,4 +1,5 @@
-angular.module("listaTelefonica").provider("serialGenerate", function () {
+angular.module("serialGenerate", []);
+angular.module("serialGenerate").provider("serialGenerate", function () {
 	this.$get = function () {
 		return {
 			generate : function () {
