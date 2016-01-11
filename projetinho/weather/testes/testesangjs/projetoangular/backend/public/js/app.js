@@ -1,2 +1,2 @@
 angular
-	.module("listaTelefonica", ["ngMessages"]);
+	.module("listaTelefonica", []);
