@@ -3,7 +3,8 @@
 <head>
 	<meta charset = "UTF-8">
 	<title>App Inepe</title>
-	<script src="lib/angular.js"></script>
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/angular-route.js"></script>
 	<script src="lib/serialGenerator/serialGenerate.js"></script>
 	<script src="lib/accordion/uiAccordion.js"></script>
 	<script src="js/app.js"></script>
@@ -16,70 +17,16 @@
 	<script src="js/filters/dateFilter.js"></script>
 	<script src="js/directives/uiAlertDirective.js"></script>
 	<script src="js/directives/uiDateDirective.js"></script>
-	<script src="lib/angular-messages.js"></script>
-	<script src="lib/angular-locale_fr-fr.js"></script>
-	<script src="lib/angular-locale_pt-br.js"></script>
+	<script src="js/config/routeConfig.js"></script>
+	<script src="lib/angular/angular-messages.js"></script>
+	<script src="lib/angular/angular-locale_fr-fr.js"></script>
+	<script src="lib/angular/angular-locale_pt-br.js"></script>
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/ui.css">
 </head>
-<body ng-controller="listaTelefonicaCtrl">
-	<div class="jumbotron">
-		<h3>{{app}}</h3>
-		<ui-accordions>
-		<ui-accordion title="Accordion1" >
-			{{loren}}
-		</ui-accordion>
-		<ui-accordion title="Accordion2">
-			{{loren}}
-		</ui-accordion>
-		</ui-accordions>
-		<hr/>
-		<!-- <div ui-alert title="Ops! Aconteceu um problema!">
-			{{error}}
-		</div> -->
-		<input type="text" ng-model = "buscador" class= "form-control" placeholder = "O que você esta buscando?">
-		<table class="table" ng-if="contatos.length > 0">
-			<tr>
-				<th></th>
-				<th><a href="" ng-click="ordenarPor('nome')">Name</th>
-				<th><a href="" ng-click="ordenarPor('telefone')">Contato</th>
-				<th><a href="" ng-click="ordenarPor('data')">Data</th>
-				<th><a href="" ng-click="ordenarPor('Operadora')">Operadora</th>
-			</tr>
-			<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter: buscador | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao ">
-				<td><input type="checkbox" ng-model = "contato.selecionado"/></td>
-				<td>{{contato.nome | name | ellipsis}}</td>
-				<td>{{contato.telefone}}</td>
-				<td>{{contato.data | date}}</td>
-				<td>{{contato.operadora.nome}}</td>
-			</tr>
-		</table>
-		<hr/>
-		<h5>Add</h5>
-		<form name="contatoForm">
-			<input class="form-control" type="text" ng-model = "contato.nome" name="nome" placeholder = "Nome" ng-required = "true" ng-minlength = "5">
-			<input class="form-control" type="number" ng-model = "contato.telefone" name="telefone" placeholder = "Telefone" ng-required = "true" ng-pattern = "/^\d{8}$/">
-			<input class="form-control" type="text" ng-model = "contato.data" name="data" placeholder = "Data" ui-date/>
-			<select class="form-control" ng-model = "contato.operadora" ng-options="operadora.nome + ' ( ' + (operadora.preco | currency) + ' ) ' group by operadora.categoria for operadora in operadoras">
-				<option value="">Selecione uma operadora!</option>
-			</select>
-		</form>
-		<div ng-show= "contatoForm.nome.$error.required && contatoForm.nome.$dirty" class="alert alert-danger">
-			<p>Por favor, preencha o nome!</p>
-		</div>
-		<div ng-show= "contatoForm.nome.$error.minlength" class="alert alert-danger">
-			<p>O nome deve ter no minimo 5 caracteres!</p>
-		</div>
-		<div ng-show= "contatoForm.telefone.$error.required && contatoForm.telefone.$dirty" class="alert alert-danger">
-			<p>Por favor, preencha o telefone!</p>
-		</div>
-		<div ng-show= "contatoForm.telefone.$error.pattern" class="alert alert-danger">
-			<p>O campo telefone deve ter o formato DDDDD-DDDD!</p>
-		</div>
-		<button class = "btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar Contato</button>
-		<button class = "btn btn-danger btn-block" ng-click="removerContatos(contatos)" ng-if="isContatoSelecionado(contatos)">Remover Contato</button>
-	</div>
+<body>
+	<div ng-view></div>
 	<div ng-include="'http://localhost:3412/views/rodape.html'" ></div>
 </body>
 </html>
