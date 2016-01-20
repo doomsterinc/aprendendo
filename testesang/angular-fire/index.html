@@ -7,12 +7,22 @@
 	<script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/controllers/testFireCtrl.js"></script>
+	<script rel="stylesheet" type="text/css" href="css/bootstrap.css"></script>
 </head>
-<body ng-controller="testFireCtrl">
+<body ng-controller="testFireCtrl" class="jumbotron">
+	
+	<div>
+		<label for="nameInput">Username:</label>
+		<input ng-model="name" type="text" id="nameInput" placeholder="enter a username...">
+	</div>
+	
 	<div>
 		<ul ng-repeat="message in messages">
 			<li>{{message.body}}</li>
 		</ul>
 	</div>
+	<footer>
+		<input ng-model="msg" ng-keydown="addMessage($event)" type="text" id="messageInput" placehoulder="Type a message...">
+	</footer>
 </body>
 </html>
