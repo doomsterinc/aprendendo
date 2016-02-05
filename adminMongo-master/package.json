@@ -1,7 +1,7 @@
 {
   "name": "admin-mongo",
   "version": "0.0.1",
-  "description": "A Web user interface to administer MongoDB databases",
+  "description": "A Web user interface admMongoDB",
   "author": "Mark Moffat <mrvautin@gmail.com>",
   "private": false,
   "repository": {
