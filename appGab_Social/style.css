@@ -1,0 +1,7 @@
+body{
+  background-color: black;
+}
+#img_lamp {
+  display: block;
+  border: 20px auto;
+}
