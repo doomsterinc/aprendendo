@@ -1,0 +1,7 @@
+{"jsasset": {
+   "@name": "backButton",
+   "@id": "E0B16530-E5D6-8C4C-7CE1-DF5F1ED09B18",
+   "@script": "define( [ 'require' ], function(  ){\n\treturn [{\n        type: 'directive',\n        name: 'backButton',\n        deps: [directive_backButton]\n    }];\n\n\tfunction directive_backButton(){\n\t\treturn {\n\t\t\trestrict: 'A',\n\t\t\tlink: function(scope, el, attrs){\n\t\t\t\tel.bind('click tap', function(scope){\n\t\t\t\t\treturn function(e){\n\t\t\t\t\t\thistory.back();\n\t\t\t\t\t\tscope.$apply();\n\t\t\t\t\t};\n\t\t\t\t}(scope));\n\t\t\t}\n\t\t};\n\t}\n});\n"
+}}
+
+
