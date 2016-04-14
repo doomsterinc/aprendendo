@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>testando2</title>
+  </head>
+  <body>
+
+    <script>
+      var todoList = [];
+      function rememberTo(task){
+        todoList.push(task);
+      }
+      function whatIsNext(){
+        todoList.shift();
+      }
+      function urgentlyRememberTo(task){
+        todoList.unshift(task);
+      }
+    </script>
+  </body>
+</html>
