@@ -1,0 +1,43 @@
+#!/bin/bash
+set -e
+
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+source ${OPENSHIFT_JBOSSEWS_DIR}/bin/util
+
+while getopts 'd' OPTION
+do
+    case $OPTION in
+        d) set -x
+        ;;
+    esac
+done
+
+relink_configs
+
+tmp=${OPENSHIFT_JBOSSEWS_DIR}/tmp
+if [ -d $tmp ]; then
+  for d in $tmp/*; do
+      if [ -d $d ]; then
+          echo "Emptying tmp dir: $d"
+          rm -rf $d/* $d/.[^.]*
+      fi
+  done
+fi
+
+# clear the tomcat work directory to avoid accumulating old content
+# it will be recreated when tomcat starts or when the webapps directory is changed
+if [ -d ${OPENSHIFT_JBOSSEWS_DIR}/work/ ]; then
+    rm -rf ${OPENSHIFT_JBOSSEWS_DIR}/work/
+fi
+
+# if repo/webapps has any files in it, sync them to $OPENSHIFT_JBOSSEWS_DIR/webapps
+# and delete any files in $OPENSHIFT_JBOSSEWS_DIR/webapps that don't exist in
+# repo/webapps
+if [ "$(ls ${OPENSHIFT_REPO_DIR}/webapps 2>/dev/null)" ]; then
+  rsync -rS --delete ${OPENSHIFT_REPO_DIR}/webapps/ ${OPENSHIFT_JBOSSEWS_DIR}/webapps/
+fi
+
+# for hot deploy, the touching is needed when app date is older than current date
+if hot_deploy_enabled_for_latest_deployment; then
+    touch ${OPENSHIFT_JBOSSEWS_DIR}/webapps/*
+fi

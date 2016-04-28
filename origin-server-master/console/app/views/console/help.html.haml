@@ -1,0 +1,27 @@
+- content_for :page_title, 'Help'
+
+%h1 Help
+
+%section.row.row-help
+  .span3
+    = render :partial => 'console/help/create'
+
+  .span3
+    = render :partial => 'console/help/learn'
+
+  .span3
+    = render :partial => 'console/help/troubleshoot'
+
+  .span3
+    = render :partial => 'console/help/engage'
+
+-#%section.row
+  .span12
+    %h2 Videos
+    %ul.thumbnails
+      %li.span3
+        .thumbnail
+          %h5 Product Tour
+          = link_to 'video1' do
+            %img{:src => '/app/images/video_stills/OpenShift-Express-demo.png', :alt => 'Play video'}
+          %p This video walks you through the high level functionality of OpenShift Express, from installing the client tools, creating a subdomain to deploying your app onto the cloud.

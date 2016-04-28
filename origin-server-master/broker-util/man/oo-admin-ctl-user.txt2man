@@ -1,0 +1,133 @@
+NAME
+  oo-admin-ctl-user
+  
+SYNOPSIS
+  oo-admin-ctl-user [-l|--login login_name] [-f|--logins-file file_name]
+  [--create] [-q|--quiet]
+  [--setmaxgears max_gears] [--setconsumedgears consumed_gears]
+  [--setmaxdomains max_domains]
+  [--setmaxuntrackedstorage max_untracked_storage]
+  [--setmaxtrackedstorage max_tracked_storage]
+  [--setmaxteams max_teams]
+  [--setplan plan_id]
+  [--setplanquantity plan_quantity]
+  [--setplanexpirationdate date]
+  [--clearplanexpirationdate]
+  [--listsubaccounts] [--addsubaccount subaccount_login]
+  [--removesubaccount subaccount_login] [--allowsubaccounts true|false]
+  [--addgearsize gear_size] [--removegearsize gear_size]
+  [--inheritgearsizes true|false] [--allowha true|false]
+  [--allowprivatesslcertificates true|false] [--allowplanupgrade true|false]
+  [--allowviewglobalteams true|false]
+
+  oo-admin-ctl-user [-h|--help] 
+
+DESCRIPTION
+  Utility to manage users within OpenShift Origin.
+
+OPTIONS
+  -h|--help  
+    Display a simple help dialog.
+
+  -l|--login login_name  
+    Login with OpenShift access. Required unless --logins-file is specified.
+
+  -f|--logins-file <file>
+    File containing one login per line (use instead of --login argument)
+
+  -q|--quiet
+    Suppress non-error output.
+
+  -c|--create
+    Create the specified user(s) if they do not already exist.
+
+  --setmaxgears max_gears  
+    Set the maximum number of gears a user is allowed to consume.
+
+  --setmaxdomains max_domains
+    Set the maximum number of domains a user is allowed to consume.
+
+  --setconsumedgears consumed_gears  
+    Set the number of gears a user has consumed. Use with caution.
+
+  --setmaxuntrackedstorage max_untracked_storage 
+    Set the maximum amount of untracked additional file-system storage.
+
+  --setmaxtrackedstorage max_tracked_storage 
+    Set the maximum amount of tracked additional file-system storage.
+    
+  --setmaxteams max_teams  
+    Set the maximum number of teams a user is allowed to create.
+    
+  --setplan plan_id
+    Set the plan for the user
+    
+  --setplanquantity plan_quantity
+    Set the quantity of plan
+    
+  --setplanexpirationdate date
+    Set the plan expiration date for the user. Format yyyy-mm-dd.
+    
+  --clearplanexpirationdate 
+    Clears the plan expiration date for the user.
+ 
+  --listsubaccounts  
+    List the subaccounts that have been created under this parent account.
+    Cannot use this option with --quiet.
+
+  --addsubaccount subaccount_login  
+    The subaccount account name to add to the login parent account.
+    Cannot use this option when multiple logins are specified.
+
+  --removesubaccount subaccount_login  
+    The subaccount account name to remove from the login parent account.
+    Cannot use this option when multiple logins are specified.
+
+  --allowsubaccounts true|false  
+    Add or Remove the capability to manage/maintain subaccounts.
+
+  --addgearsize gear_size  
+    Add gear_size to the capability for this login user account.
+  
+  --removegearsize gear_size  
+    Remove gear_size from the capability for this login user account.
+
+  --inheritgearsizes true|false  
+    Allow or Diasllow inheritance of login user gearsizes capability to
+    subaccounts.
+    
+  --allowha true|false
+    Add or Remove High Availability capability for this login user account.
+
+  --allowprivatesslcertificates true|false  
+    Add / Remove the capability to add private SSL certificates.
+
+  --allowplanupgrade true|false  
+    Add / Remove the capability to upgrade plan for this login user account.
+
+  --allowviewglobalteams true|false
+    Add / Remove the capability to search and view any global team for this login user
+
+EXAMPLE
+
+  List the current user settings with:
+
+    $ oo-admin-ctl-user -l bob@redhat.com
+
+  Set the maximum number of gears a user is allowed to use with:
+  
+    $ oo-admin-ctl-user -l bob@redhat.com --setmaxgears 10
+
+WARNINGS
+  
+  When modifying multiple users, use the -f option to provide multiple logins
+  at once, rather than invoking the script multiple times.
+
+SEE ALSO
+  oo-admin-ctl-district(8), oo-admin-move(8),
+  oo-admin-chk(8), oo-accept-broker(8), 
+  oo-admin-ctl-app(8), oo-admin-ctl-domain(8),
+  oo-admin-ctl-user(8), oo-register-dns(8)
+ 
+AUTHOR
+  Adam Miller <admiller@redhat.com> - man page written for OpenShift Origin 

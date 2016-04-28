@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="broker"/>
+	<buildpathentry kind="src" path="common"/>
+	<buildpathentry kind="src" path="controller"/>
+	<buildpathentry kind="src" path="node"/>
+	<buildpathentry kind="src" path="plugin/auth/mongo"/>
+	<buildpathentry kind="src" path="plugin/dns/bind"/>
+	<buildpathentry kind="con" path="org.eclipse.dltk.launching.INTERPRETER_CONTAINER"/>
+</buildpath>

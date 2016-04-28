@@ -1,0 +1,6 @@
+test/reports
+pkg
+test/coverage
+Gemfile.lock
+.ruby-gemset
+.ruby-version

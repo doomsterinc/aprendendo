@@ -1,0 +1,96 @@
+#!/usr/bin/oo-ruby
+
+# Utiltity to import the mongo database into json documents containing analytics data for applications
+# Existing documents in the collection are removed before the import
+infile = nil
+if ARGV.include? "--infile"
+  index = ARGV.index("--infile")
+  infile = ARGV[index+1]
+end
+
+if infile.nil? 
+  puts "Synopsis:"
+  puts "Utiltity to import json documents containing analytics data for applications into mongo database" 
+  puts "Existing documents in the collection are removed before the import" 
+  puts "Usage :"
+  puts "  #{__FILE__} --infile <filename>" 
+  exit 1
+end
+
+
+require "#{ENV['OPENSHIFT_BROKER_DIR'] || '/var/www/openshift/broker'}/config/environment"
+include Mongo
+
+u = Rails.application.config.datastore[:user]
+p = Rails.application.config.datastore[:password]
+hp = Rails.application.config.datastore[:host_port]
+db = Rails.application.config.datastore[:db]
+
+def analytics_db(read_preference=:secondary, session_name='default')
+  config = Mongoid::Config.sessions[session_name]
+  hosts = config['hosts']
+  ssl = config['options']['ssl']
+  if hosts.length > 1
+    con = MongoReplicaSetClient.new(hosts, :read => read_preference, :ssl => ssl)
+  else
+    host_port = hosts[0].split(':')
+    con = MongoClient.new(host_port[0], host_port[1].to_i, :ssl => ssl)
+  end
+  adb = con.db('analytics')
+  adb.authenticate(config['username'], config['password'])
+  adb
+end
+
+def mongofind(collection_name, query, selection)
+  analytics_db.collection(collection_name).find(query, selection) do |mcursor|
+    mcursor.each do |hash|
+      yield hash
+    end
+  end
+end
+
+puts "Extracting analytics from '#{infile}'"
+basename = File.basename(infile)
+`cp #{infile} /tmp/; cd /tmp/; tar xvzf #{basename} >& /dev/null`
+if not File.directory?("/tmp/tmp/analytics")
+  puts "Invalid input dump"
+  exit
+end
+
+files = [['analytics.apps.json', 'applications'], ['analytics.domains.json','domains'], ['analytics.usage.json', 'usage'], ['analytics.users.json', 'cloud_users']]
+
+files.each do |file, collection|
+    puts
+    puts "Cleaning up existing documents in collection [#{collection}]"
+    analytics_db.collection(collection).remove()
+    puts
+    puts "Running mongoimport on file [#{file}] on collection [#{collection}]"
+    cmd = "mongoimport --username #{u} --password #{p} --host #{hp} --file /tmp/tmp/analytics/#{file} --db analytics --collection #{collection} --upsert"
+    system(cmd)
+end
+
+`rm -rf /tmp/tmp/analytics`
+
+# now post process
+puts
+puts "Post processing.."
+$coll = analytics_db.collection("applications")
+mongofind("applications", { }, { :fields => ["_id","component_instances","gears"], :timeout => false }) do |app|
+  begin
+    new_gears = []
+    app["gears"].each do |gear|
+      new_gears << {"_id" => gear["_id"].dup}
+    end if app["gears"].present?
+
+    new_cis = []
+    app["component_instances"].each do |ci|
+      new_cis << { "cartridge_name" => ci["cartridge_name"].dup }
+    end if app["component_instances"].present?
+    $coll.update({"_id" => app["_id"]}, {"$set" => {"gears" => new_gears, "component_instances" => new_cis}} ) if app["_id"]
+  rescue Exception => e
+    puts e.message
+    puts e.backtrace
+  end
+end
+
+puts "Import complete!"

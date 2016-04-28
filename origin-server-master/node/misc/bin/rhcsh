@@ -1,0 +1,317 @@
+#!/bin/bash
+
+[ -f ~/app-root/data/.bash_profile ] && source ~/app-root/data/.bash_profile
+
+source /etc/init.d/functions 2> /dev/null
+
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+# source OpenShift environment variable into context
+function load_env {
+    [ -z "$1" ] && return 1
+    [ -f "$1" ] || return 0
+    [[ "$1" =~ .*\.rpmnew$ ]] && return 0
+
+    local key=$(basename $1)
+    export $key="$(< $1)"
+}
+
+for f in /etc/openshift/env/* ~/.env/* ~/*/env/*
+do
+  load_env $f
+done
+
+if [ -n "$OPENSHIFT_PRIMARY_CARTRIDGE_DIR" ]
+then
+    for f in $OPENSHIFT_PRIMARY_CARTRIDGE_DIR/env/*
+    do
+      load_env $f
+    done
+fi
+
+export PATH=$(build_path)
+export LD_LIBRARY_PATH=$(build_ld_library_path)
+
+for f in ~/.env/user_vars/*
+do
+  load_env $f
+done
+
+if [ -n "$OPENSHIFT_UMASK" ]; then
+    umask $OPENSHIFT_UMASK
+fi
+
+OPENSHIFT_RHCSH_IDLE_TIMEOUT=300
+source /etc/openshift/node.conf
+
+function float_test {
+    awk 'END { exit ( !( '"$1"')); }' </dev/null
+}
+
+function welcome {
+    if [ -n "$MOTD_FILE" -a -f "$MOTD_FILE" ]; then
+        cat $MOTD_FILE
+    else
+      # Do not replace with HEREDOC. HEREDOC fails when quota exceeded on gear.
+      echo 1>&2 '
+    *********************************************************************
+
+    You are accessing a service that is for use only by authorized users.
+    If you do not have authorization, discontinue use at once.
+    Any use of the services is subject to the applicable terms of the
+    agreement which can be found at:
+    https://www.openshift.com/legal
+
+    *********************************************************************
+
+    Welcome to OpenShift shell
+
+    This shell will assist you in managing OpenShift applications.
+
+    !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!!
+    Shell access is quite powerful and it is possible for you to
+    accidentally damage your application.  Proceed with care!
+    If worse comes to worst, destroy your application with "rhc app delete"
+    and recreate it
+    !!! IMPORTANT !!! IMPORTANT !!! IMPORTANT !!!
+
+    Type "help" for more info.
+
+'
+  fi
+
+  if which quota  > /dev/null  2>&1
+  then
+    # Quota returns nonzero if you are over limit
+    if quota >/dev/null 2>&1
+    then
+      local usage=$(quota -w 2>/dev/null| grep '^.*/dev/' | awk '{printf "%3.1f", ($2 / $4 * 100)}')
+      if float_test "${usage:-0} > 90.0"
+      then
+        echo 1>&2 "Warning: Gear ${OPENSHIFT_GEAR_UUID} is using ${usage}% of disk quota"
+      fi
+
+      local usage=$(quota -w 2>/dev/null| grep '^.*/dev/' | awk '{printf "%3.1f",  ($5 / $7 * 100)}')
+      if float_test "${usage:-0} > 90.0"
+      then
+        echo 1>&2 "Warning: Gear ${OPENSHIFT_GEAR_UUID} is using ${usage}% of inodes allowed"
+      fi
+    else
+      echo 1>&2 "Your application is out of disk space; please run \"rhc app-tidy $OPENSHIFT_APP_NAME\""
+    fi
+  else
+    echo 1>&2 "Command \"quota\" not found for app $OPENSHIFT_APP_NAME, please check the node hosting this app"
+  fi
+}
+
+alias ctl_app=gear
+alias lsof='oo-lists-ports'
+alias quota='quota 2>/dev/null'
+
+function ctl_all() {
+  case "$1" in
+    start)
+      echo "Starting services"
+      gear start
+    ;;
+    stop)
+      echo "Stopping services"
+      gear stop
+    ;;
+    restart)
+      echo "Restarting services"
+      gear restart --all-cartridges;
+    ;;
+    *) gear --help
+    ;;
+  esac
+}
+
+function mysql() {
+   #  Setup default options.
+   [ -n "$OPENSHIFT_MYSQL_DB_HOST" ]  &&  hostopt="-h $OPENSHIFT_MYSQL_DB_HOST"
+   portopt="-P ${OPENSHIFT_MYSQL_DB_PORT:-3306}"
+   useropt="-u ${OPENSHIFT_MYSQL_DB_USERNAME:-'admin'}"
+   passopt=--password="$OPENSHIFT_MYSQL_DB_PASSWORD"
+
+   #  Unset default value if it was provided to us.
+   for arg in $@; do
+      case "$arg" in
+         --host=*|-h)      unset hostopt  ;;
+         --port=*|-P)      unset portopt  ;;
+         --user=*|-u)      unset useropt  ;;
+         --password=*|-p)  unset passopt  ;;
+         *)  ;;
+      esac
+   done
+
+   CMD=`which mysql`
+   if [[ ! -z $OPENSHIFT_MYSQL_VERSION && $OPENSHIFT_MYSQL_VERSION = '5.5' ]]; then
+     which scl 2>&1 >/dev/null
+     if [ $? -eq 0 ]; then
+       CMD=`scl enable mysql55 "which mysql"`
+     fi
+   fi
+
+  $CMD ${hostopt} ${portopt} ${useropt} ${passopt} "$@"
+
+}  #  End of  mysql  function.
+
+function psql() {
+  pghost=${PGHOST:-$OPENSHIFT_POSTGRESQL_DB_HOST}
+  pattern="^/"
+  if [[ ! $pghost =~ $pattern ]]
+  then
+    pgport=${PGPORT:-$OPENSHIFT_POSTGRESQL_DB_PORT}
+  fi
+  pguser=${PGUSER:-$OPENSHIFT_POSTGRESQL_DB_USERNAME}
+  pgpassword=${PGPASSWORD:-$OPENSHIFT_POSTGRESQL_DB_PASSWORD}
+  pgdatabase=${PGDATABASE:-$OPENSHIFT_APP_NAME}
+
+  extra_args=""
+  # Ensure our psqlrc sets the histfile
+  grep HISTFILE $HOME/.psqlrc &> /dev/null
+  if [ $? -ne 0 ]
+  then
+    extra_args+=" --set HISTFILE=$OPENSHIFT_DATA_DIR/.psql_history-$pgdatabase"
+  fi
+
+  CMD=`which psql`
+  if [[ ! -z $OPENSHIFT_POSTGRESQL_VERSION && $OPENSHIFT_POSTGRESQL_VERSION = '9.2' ]]; then
+    which scl 2>&1 >/dev/null
+    if [ $? -eq 0 ]; then
+      CMD=`scl enable postgresql92 "which psql"`
+    fi
+  fi
+
+  PGHOST=$pghost \
+    PGPORT=$pgport \
+    PGUSER=$pguser \
+    PGPASSWORD=$pgpassword \
+    PGDATABASE=$pgdatabase \
+    $CMD $extra_args "$@"
+
+  CMD_RC=$?
+
+  if [ $CMD_RC -eq 2 ]; then
+    lines=(
+      "psql: could not connect to server: Connection refused",
+      "        Is the server running on host \"${pghost}\" and accepting",
+      "        TCP/IP connections on port ${pgport}?"
+    )
+    errmsg=$(printf -- '%s\n' "${lines[@]}")
+  fi
+  return $CMD_RC
+}
+
+function mongo () {
+    local -a cmdline=("mongo");
+    if [[ $# -eq 0 ]]
+    then
+        cmdline+=("--username" "${OPENSHIFT_MONGODB_DB_USERNAME:-'admin'}")
+        [[ -n "$OPENSHIFT_MONGODB_DB_PASSWORD" ]] && cmdline+=("--password" "$OPENSHIFT_MONGODB_DB_PASSWORD")
+    fi
+    if ! [[ "$@" =~ --host|"$OPENSHIFT_MONGODB_DB_HOST" ]]
+    then
+        local port_db="${OPENSHIFT_MONGODB_DB_PORT:-27017}/admin"
+        if [[ -n "$OPENSHIFT_MONGODB_DB_GEAR_DNS" ]]
+        then
+            cmdline+=("${OPENSHIFT_MONGODB_DB_GEAR_DNS:-'127.0.0.1'}:${port_db}")
+        else
+            cmdline+=("${OPENSHIFT_MONGODB_DB_HOST:-'127.0.0.1'}:${port_db}")
+        fi
+    fi
+    cmdline+=("$@")
+    # If scl mongo is installed and the app uses mongo, assume scl
+    # mongo. If scl mongo is installed but the app doesn't have a mongo
+    # cart, assume "system" mongo
+    if [[ -n "${OPENSHIFT_MONGODB_DB_GEAR_DNS}" ]] && [[ $(/usr/bin/scl -l) =~ mongodb24 ]]
+    then
+        scl enable mongodb24 "$(printf %q\  "${cmdline[@]}")"
+    else
+        command "${cmdline[@]}"
+    fi
+}
+
+# The mco command shouldn't be run by gears
+# but its really protected at the config files.
+function mco {
+    echo "mco: Permission denied" >&2
+    return 255
+}
+
+# Add safety checks around rm to prevent 'rm -rf'
+# from destroying the git repo.
+function rm {
+    end_args=""
+    for test_arg in "$@"
+    do
+        if [ \( -n "$end_args" \) -o \( "${test_arg:0:1}" != "-" \) ]
+        then
+            for f in $(eval echo "$test_arg")
+            do
+                if [ -e "$f" ]
+                then
+                    if ! [ -O "$f" ]
+                    then
+                      echo "ERROR: Refusing unsafe deletion: $f" >&2
+                      return 254
+                    fi
+
+                    if [[ "$f" =~ ^OPENSHIFT_.*_IDENT$ || "$f" =~ metadata/manifest.yml$ ]]
+                    then
+                      echo "ERROR: Refusing unsafe deletion: $f" >&2
+                      return 254
+                    fi
+                fi
+            done
+        elif [ "$test_arg" == "--" ]
+        then
+            end_args="1"
+        fi
+    done
+    /usr/bin/env rm "$@"
+}
+
+
+function help {
+    cat <<EOF
+Help menu: The following commands are available to help control your openshift
+application and environment.
+
+gear            control your application (start, stop, restart, etc)
+                or deps with --cart      (gear start --cart mysql-5.1)
+tail_all        tail all log files
+export          list available environment variables
+rm              remove files / directories
+ls              list files / directories
+ps              list running applications
+kill            kill running applications
+mysql           interactive MySQL shell
+mongo           interactive MongoDB shell
+psql            interactive PostgreSQL shell
+quota           list disk usage
+
+Deprecated:
+ctl_app         control your application (start, stop, restart, etc)
+ctl_all         control application and deps like mysql in one command
+EOF
+
+}
+
+function tail_all {
+    /usr/bin/tail -f */logs/*
+}
+
+export PS1="[$OPENSHIFT_GEAR_DNS \W]\> "
+export TMOUT=$OPENSHIFT_RHCSH_IDLE_TIMEOUT
+export SHELL=/bin/bash
+welcome
+
+# Since the user is actively using this gear, unidle the gear (if idle).
+which unidle_gear.sh &> /dev/null  &&  unidle_gear.sh "${PS1:+'show-messages'}"
+
+if [ -z $SSH_TTY ]; then
+    echo "WARNING: This ssh terminal was started without a tty." 1>&2
+    echo "          It is highly recommended to login with: ssh -t" 1>&2
+fi

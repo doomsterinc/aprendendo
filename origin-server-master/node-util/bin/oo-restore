@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+cd ~
+
+if [ "$1" == "INCLUDE_GIT" ]; then
+  gear restore --restore-git-repo
+else
+  gear restore
+fi

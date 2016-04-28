@@ -1,0 +1,40 @@
+<VirtualHost *:443>
+  ServerName <%= server_name %>
+  DocumentRoot /var/www/html
+
+  SSLEngine on
+  SSLProxyEngine on
+  # SSLOptions merged with server-wide options
+  SSLOptions +StdEnvVars +ExportCertData
+
+  SSLCertificateFile <%= ssl_certificate_file %>
+  SSLCertificateKeyFile <%= ssl_key_file %>
+  SSLCertificateChainFile <%= ssl_certificate_chain_file %>
+
+  RewriteEngine              On
+
+  # Set headers for the forward
+  RequestHeader set X-Forwarded-Proto "https"
+  RequestHeader set X-Forwarded-Port "443"
+  RequestHeader set X-Forwarded-SSL-Client-Cert %{SSL_CLIENT_CERT}e
+
+  # Set X-Request-Start header to allow checking request life cycle.
+  RequestHeader set X-Request-Start "%t"
+
+  # Set X-Client-IP to the node which contacted the front-end
+  RewriteCond %{REMOTE_ADDR} ^(.*)$
+  RewriteRule ^.*$ - [E=X_CLIENT_IP:%1]
+  RequestHeader set X-Client-IP %{X_CLIENT_IP}e
+
+  # Log configuration for gear access logs
+  SetEnv APP_UUID <%= app_uuid %>
+  SetEnv GEAR_UUID <%= gear_uuid %>
+  Include conf.d/openshift-vhost-logconf.include
+
+  # Create this file to customize configuration for all gear vhosts:
+  Include conf.d/openshift-https-vhost.includ[e]
+
+  # This file may need to be regenerated from the template,
+  # so put gear-specific customizations in a separate included .conf file:
+  Include <%= include_path %>/*.conf
+</VirtualHost>

@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
+
+client_result ""
+client_result "10gen-mms-agent added. "
+client_result "Please configure your mongodb host at https://mms.mongodb.com/ to start monitoring performance data."
+client_result ""
+client_result "Monitoring URL: https://mms.mongodb.com/"
+
+cart_props "monitoring_url=https://mms.mongodb.com/"
