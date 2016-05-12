@@ -1,3 +1,5 @@
 mongoexport --db nome_do_database --collection nome_da_colecao --out minha_colecao.json
 
 mongoimport --db database --collection collection --drop --file data.json
+
+db.collection.find({}).count()
