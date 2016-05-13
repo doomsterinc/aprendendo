@@ -24,4 +24,4 @@ db.collection.save() (insert and save in collection selected)
 
 db.collection.findOne() (returns Object common)
 
-while(cur.hasNext()){ print(tojson(cur.next()))} (if exists next object in json print in this screen value in json format)
+while(cur.hasNext()){ print(tojson(cur.next()))} (if exists next object, print on this screen value in json format)
