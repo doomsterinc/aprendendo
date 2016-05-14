@@ -75,4 +75,27 @@ db.pokemons.find(query) =  not returns objects with value name equal Pikachu or 
 
 $and == and logical
 var query = {$and: [{name:"Pikachu", {height: 1.69}}]}
-db.pokemons.find(query) =  not returns objects with value name equal Pikachu and height equal 1.69
+db.pokemons.find(query) =  returns objects with value name equal Pikachu and height equal 1.69
+
+
+
+Existencials Operators
+
+$exits
+example
+dc.collection.find({campo:{$exists:true}})
+
+
+Array Operators
+
+
+
+
+
+
+
+
+
+
+
+
