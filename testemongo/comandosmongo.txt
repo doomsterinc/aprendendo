@@ -27,12 +27,12 @@ db.collection.findOne() (returns Object common)
 while(cur.hasNext()){ print(tojson(cur.next()))} (if exists next object, print on this screen value in json format)
 
 
-var pokemon = {'name':'Kadabra', 'description': 'Kadabra emits a peculiar alpha wave if it develops a headache. Only those people with a particularly strong psyche can hope to become a Trainer of this Pokémon.', 'type':'Psychic', "attack": 35, "defense": 30, "height": 4.03}
+var pokemon = [
+	{'name':'Trevenant', 'description': 'It can control trees at will. It will trap people who harm the forest, so they can never leave.', 'type':'Ghost', 'attack': 110, 'defense': 76, 'height': 4.11},{'name':'Yveltal', 'description': 'When this legendary Pokémons wings and tail feathers spread wide and glow red, it absorbs the life force of living creatures.', 'type':'Dark', 'attack': 131, 'defense': 95, 'height': 19.00},{'name':'Steelix', 'description': 'Steelix lives even further underground than Onix. This Pokémon is known to dig toward the earths core. There are records of this Pokémon reaching a depth of over six-tenths of a mile underground.', 'type':'Steel', "attack": 85, "defense": 200, "height": 30.05},{'name':'Marowak', 'description': 'Marowak is the evolved form of a Cubone that has overcome its sadness at the loss of its mother and grown tough. This Pokémons tempered and hardened spirit is not easily broken.', 'type':'Ground', "attack": 80, "defense": 110, "height": 3.03},{'name':'Kadabra', 'description': 'Kadabra emits a peculiar alpha wave if it develops a headache. Only those people with a particularly strong psyche can hope to become a Trainer of this Pokémon.', 'type':'Psychic', "attack": 35, "defense": 30, "height": 4.03}]
 
-var pokemon = {'name':'Marowak', 'description': 'Marowak is the evolved form of a Cubone that has overcome its sadness at the loss of its mother and grown tough. This Pokémon's tempered and hardened spirit is not easily broken.', 'type':'Ground', "attack": 80, "defense": 110, "height": 3.03}
 
-var pokemon = {'name':'Steelix', 'description': 'Steelix lives even further underground than Onix. This Pokémon is known to dig toward the earth's core. There are records of this Pokémon reaching a depth of over six-tenths of a mile underground.', 'type':'Steel', "attack": 85, "defense": 200, "height": 30.05}
-
-var pokemon = {'name':'Yveltal', 'description': 'When this legendary Pokémon's wings and tail feathers spread wide and glow red, it absorbs the life force of living creatures.', 'type':'Dark', "attack": 131, "defense": 95, "height": 19.00}
-
-var pokemon = {'name':'Trevenant', 'description': 'It can control trees at will. It will trap people who harm the forest, so they can never leave.', 'type':'Ghost', "attack": 110, "defense": 76, "height": 4.11}
+the comand db.collections.find() get two parameters; first points get elements in object and second choice elements what to go be caugth or not
+example
+var query={name:"Pikachu"}
+var fields = {name:1, description:1}
+db.pokemons.find(query,fields)
