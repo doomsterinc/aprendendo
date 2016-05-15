@@ -18,10 +18,84 @@ db.collection.insert() (insert objects in collection select)
 
 db.createCollection() (create collection in current db)
 
-var pokemon = {'name':'Pikachu', 'description': 'Rato elétrico bem fofinho', 'type':'eletric', attack:55, height:0.5}
+var pokemon = {'name':'Pikachu', 'description': 'Rato elétrico bem fofinho', 'type':'eletric', attack:55, defense:00, height:0.5}
 
 db.collection.save() (insert and save in collection selected)
 
 db.collection.findOne() (returns Object common)
 
-while(cur.hasNext()){ print(tojson(cur.next()))} (if exists next object in json print in this screen value in json format)
+while(cur.hasNext()){ print(tojson(cur.next()))} (if exists next object, print on this screen value in json format)
+
+
+var pokemon = [
+	{'name':'Trevenant', 'description': 'It can control trees at will. It will trap people who harm the forest, so they can never leave.', 'type':'Ghost', 'attack': 110, 'defense': 76, 'height': 4.11},{'name':'Yveltal', 'description': 'When this legendary Pokémons wings and tail feathers spread wide and glow red, it absorbs the life force of living creatures.', 'type':'Dark', 'attack': 131, 'defense': 95, 'height': 19.00},{'name':'Steelix', 'description': 'Steelix lives even further underground than Onix. This Pokémon is known to dig toward the earths core. There are records of this Pokémon reaching a depth of over six-tenths of a mile underground.', 'type':'Steel', "attack": 85, "defense": 200, "height": 30.05},{'name':'Marowak', 'description': 'Marowak is the evolved form of a Cubone that has overcome its sadness at the loss of its mother and grown tough. This Pokémons tempered and hardened spirit is not easily broken.', 'type':'Ground', "attack": 80, "defense": 110, "height": 3.03},{'name':'Kadabra', 'description': 'Kadabra emits a peculiar alpha wave if it develops a headache. Only those people with a particularly strong psyche can hope to become a Trainer of this Pokémon.', 'type':'Psychic', "attack": 35, "defense": 30, "height": 4.03}]
+
+
+the comand db.collections.find() get two parameters; first points get elements in object and second choice elements what to go be caugth or not
+example
+var query={name:"Pikachu"}
+var fields = {name:1, description:1}
+db.pokemons.find(query,fields)
+
+FOR COMPLEX SEARCHES
+
+Arithmetics Operators
+
+< is $lt == less than 
+example:
+var query = {height: {$lt:0.5}}
+b.pokemons.find(query) = returns object with value height less than 0.5
+
+<= is $lte == less than or equal
+example:
+var query = {height: {$lte:0.5}}
+db.pokemons.find(query) = returns object with value height less than or equal 0.5
+
+> is $gt == greater than 
+example:
+var query = {height: {$tt:0.5}}
+db.pokemons.find(query) = returns object with value height greater than 0.5
+
+>= is $gte == greater than ou equal
+example:
+var query = {height: {$gte:0.5}}
+db.pokemons.find(query) = returns object with value height greater than or equal 0.5
+
+
+Logical Operators
+
+$or == or logical
+example
+var query = {$or: [{name:"Pikachu", {height: 1.69}}]}
+db.pokemons.find(query) = returns objects with value name equal Pikachu or height equal 1.69
+
+$nor == not or logical
+var query = {$nor: [{name:"Pikachu", {height: 1.69}}]}
+db.pokemons.find(query) =  not returns objects with value name equal Pikachu or height equal 1.69
+
+$and == and logical
+var query = {$and: [{name:"Pikachu", {height: 1.69}}]}
+db.pokemons.find(query) =  returns objects with value name equal Pikachu and height equal 1.69
+
+
+
+Existencials Operators
+
+$exits
+example
+dc.collection.find({campo:{$exists:true}})
+
+
+Array Operators
+
+
+
+
+
+
+
+
+
+
+
+
