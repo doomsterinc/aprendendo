@@ -83,7 +83,7 @@ Existencials Operators
 
 $exits
 example
-dc.collection.find({campo:{$exists:true}})
+db.collection.find({campo:{$exists:true}})
 
 
 Array Operators
