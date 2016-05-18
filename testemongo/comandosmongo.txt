@@ -86,15 +86,52 @@ example
 db.collection.find({campo:{$exists:true}})
 
 
-Array Operators
-
-
 
 var pokemon = [
 	{'name':'Paras', 'description': 'Small Pokemon', 'type':'Grass', 'attack': 35, 'defense': 55, 'height': 0.3},{'name':'Exeggcute', 'description': 'Small Small Pokemon', 'type':'Grass', 'attack': 60, 'defense': 80, 'height': 0.4},{'name':'Voltorb', 'description': 'Pokemon ugly small', 'type':'Eletric', "attack": 40, "defense": 50, "height": 30.05}]
 
 
+Update command
 
+db.collection.update(query, mod)
+
+var query ={name: /testmon/i} regex for search insensitive
+
+"_id": ObjectId("573cc69f0f6a0139cbc6edaa")
+
+Update Field == $set
+ 
+var query ={"_id": ObjectId("573cc69f0f6a0139cbc6edaa")}
+
+var mod = {$set: {name: "Testemon", attack:8000, defense: 8000,height:2.1, description:"Pokemon de teste"}}
+
+db.pokemons.update(query, mod)
+
+Deleting Field
+
+var query ={"_id": ObjectId("573cc69f0f6a0139cbc6edaa")}
+
+var mod = {$unset: {height:2.}}
+
+db.pokemons.update(query, mod)
+
+Increment $inc
+
+var mod = {$inc: {attack: 1} for increment one value in attack or create value
+
+var mod = {$inc: {attack: -1} for decrement one value in attack or create value
+
+Array Operators
+
+var mod = {$push: {moves:"Lightning Shot"}} insert or modified array in field of arrays
+
+
+var mod = {$pushAll: {moves:["Lightning Shot","fast attack", "Eletric ball"]}}
+
+
+var mod = {$pull: {moves: "Eletric ball"}}
+
+var mod = {$pullAll: {moves:["fast attack", "Eletric ball"]}}
 
 
 
