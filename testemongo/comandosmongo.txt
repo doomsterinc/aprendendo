@@ -90,7 +90,8 @@ Array Operators
 
 
 
-
+var pokemon = [
+	{'name':'Paras', 'description': 'Small Pokemon', 'type':'Grass', 'attack': 35, 'defense': 55, 'height': 0.3},{'name':'Exeggcute', 'description': 'Small Small Pokemon', 'type':'Grass', 'attack': 60, 'defense': 80, 'height': 0.4},{'name':'Voltorb', 'description': 'Pokemon ugly small', 'type':'Eletric', "attack": 40, "defense": 50, "height": 30.05}]
 
 
 
