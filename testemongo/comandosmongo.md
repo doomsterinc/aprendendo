@@ -1,6 +1,11 @@
+#MongoDB
+
+## Mongodb import e exports
 mongoexport --db nome_do_database --collection nome_da_colecao --out minha_colecao.json  (export file)
 
 mongoimport --db database --collection collection --drop --file data.json  (import file)
+
+## Basic Commands
 
 db.collection.find({}).count() (count objects in collection)
 
@@ -37,9 +42,9 @@ var query={name:"Pikachu"}
 var fields = {name:1, description:1}
 db.pokemons.find(query,fields)
 
-FOR COMPLEX SEARCHES
+## FOR COMPLEX SEARCHES
 
-Arithmetics Operators
+### Arithmetics Operators
 
 < is $lt == less than 
 example:
@@ -62,7 +67,7 @@ var query = {height: {$gte:0.5}}
 db.pokemons.find(query) = returns object with value height greater than or equal 0.5
 
 
-Logical Operators
+### Logical Operators
 
 $or == or logical
 example
@@ -79,7 +84,7 @@ db.pokemons.find(query) =  returns objects with value name equal Pikachu and hei
 
 
 
-Existencials Operators
+### Existencials Operators
 
 $exits
 example
@@ -91,7 +96,7 @@ var pokemon = [
 	{'name':'Paras', 'description': 'Small Pokemon', 'type':'Grass', 'attack': 35, 'defense': 55, 'height': 0.3},{'name':'Exeggcute', 'description': 'Small Small Pokemon', 'type':'Grass', 'attack': 60, 'defense': 80, 'height': 0.4},{'name':'Voltorb', 'description': 'Pokemon ugly small', 'type':'Eletric', "attack": 40, "defense": 50, "height": 30.05}]
 
 
-Update command
+### Update command
 
 db.collection.update(query, mod)
 
@@ -99,7 +104,9 @@ var query ={name: /testmon/i} regex for search insensitive
 
 "_id": ObjectId("573cc69f0f6a0139cbc6edaa")
 
-Update Field == $set
+### Update Field 
+
+$set
  
 var query ={"_id": ObjectId("573cc69f0f6a0139cbc6edaa")}
 
@@ -107,7 +114,7 @@ var mod = {$set: {name: "Testemon", attack:8000, defense: 8000,height:2.1, descr
 
 db.pokemons.update(query, mod)
 
-Deleting Field
+### Deleting Field
 
 var query ={"_id": ObjectId("573cc69f0f6a0139cbc6edaa")}
 
@@ -115,13 +122,13 @@ var mod = {$unset: {height:2.}}
 
 db.pokemons.update(query, mod)
 
-Increment $inc
+### Increment $inc
 
 var mod = {$inc: {attack: 1} for increment one value in attack or create value
 
 var mod = {$inc: {attack: -1} for decrement one value in attack or create value
 
-Array Operators
+### Array Operators
 
 var mod = {$push: {moves:"Lightning Shot"}} insert or modified array in field of arrays
 
