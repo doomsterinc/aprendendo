@@ -24,10 +24,13 @@
 </head>
 <body ng-app="starter">
 	<script type="text/javascript">
-		var msg = "test";
-		document.open();
-		document.write(msg);
-		document.close();
+		window.onload=hello;
+		function hellho(){
+			var msg = "test";
+			document.open();
+			document.write(msg);
+			document.close();
+		}
 	</script>
 	<ion-pane>
 	<ion-header-bar class="bar-stable">
