@@ -2,6 +2,9 @@
 
 ## Property Acess
 
+var box = {};
+box.material = "cardboard";
+
 ## Bracket Notation
 
 ## Dot Notation
