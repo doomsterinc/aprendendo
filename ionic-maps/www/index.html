@@ -25,19 +25,34 @@
 <body ng-app="starter">
 	<script type="text/javascript">
 		window.onload=hello;
-		function hellho(){
+		function hello(){
 			var msg = "test";
 			document.open();
 			document.write(msg);
 			document.close();
 		}
-	</script>
-	<ion-pane>
+		function moveon() {
+
+// Display a modal dialog to ask the user a question
+
+var answer = confirm("Ready to move on?");
+
+// If they clicked the "OK" button, make the browser load a new page
+
+if (answer) window.location = "http://google.com";
+
+}
+
+// Run the function defined above 1 minute (60,000 milliseconds) from now.
+
+setTimeout(moveon, 60000);
+</script>
+<ion-pane>
 	<ion-header-bar class="bar-stable">
-	<h1 class="title">TESTE</h1>
-</ion-header-bar>
-<ion-content>
-</ion-content>
+		<h1 class="title">TESTE</h1>
+	</ion-header-bar>
+	<ion-content>
+	</ion-content>
 </ion-pane>
 </body>
 </html>
