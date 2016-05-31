@@ -57,17 +57,6 @@
 $ npm install mysql
 ```
 
-For information about the previous 0.9.x releases, visit the [v0.9 branch][].
-
-Sometimes I may also ask you to install the latest version from Github to check
-if a bugfix is working. In this case, please do:
-
-```sh
-$ npm install felixge/node-mysql
-```
-
-[v0.9 branch]: https://github.com/felixge/node-mysql/tree/v0.9
-
 ## Introduction
 
 This is a node.js driver for mysql. It is written in JavaScript, does not
@@ -101,46 +90,6 @@ From this example, you can learn the following:
 * Closing the connection is done using `end()` which makes sure all remaining
   queries are executed before sending a quit packet to the mysql server.
 
-## Contributors
-
-Thanks goes to the people who have contributed code to this module, see the
-[GitHub Contributors page][].
-
-[GitHub Contributors page]: https://github.com/felixge/node-mysql/graphs/contributors
-
-Additionally I'd like to thank the following people:
-
-* [Andrey Hristov][] (Oracle) - for helping me with protocol questions.
-* [Ulf Wendel][] (Oracle) - for helping me with protocol questions.
-
-[Ulf Wendel]: http://blog.ulf-wendel.de/
-[Andrey Hristov]: http://andrey.hristov.com/
-
-## Sponsors
-
-The following companies have supported this project financially, allowing me to
-spend more time on it (ordered by time of contribution):
-
-* [Transloadit](http://transloadit.com) (my startup, we do file uploading &
-  video encoding as a service, check it out)
-* [Joyent](http://www.joyent.com/)
-* [pinkbike.com](http://pinkbike.com/)
-* [Holiday Extras](http://www.holidayextras.co.uk/) (they are [hiring](http://join.holidayextras.co.uk/))
-* [Newscope](http://newscope.com/) (they are [hiring](http://www.newscope.com/stellenangebote))
-
-If you are interested in sponsoring a day or more of my time, please
-[get in touch][].
-
-[get in touch]: http://felixge.de/#consulting
-
-## Community
-
-If you'd like to discuss this module, or ask questions about it, please use one
-of the following:
-
-* **Mailing list**: https://groups.google.com/forum/#!forum/node-mysql
-* **IRC Channel**: #node.js (on freenode.net, I pay attention to any message
-  including the term `mysql`)
 
 ## Establishing connections
 
