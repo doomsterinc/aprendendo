@@ -78,4 +78,15 @@ router.get('/pages/admin-details/:id', function(request,response){
 	});
 });
 
+router.get('/pages/details/:url', function(request, response){
+	var url = request.params.url;
+	Page.findOne({
+		url: url
+	},function(err, page){
+		if (err)
+			return console.log(err);
+		return response.send(page);
+	});
+});
+
 module.exports = router;
