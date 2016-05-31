@@ -10,6 +10,10 @@ var users = require('./routes/users');
 
 var app = express();
 
+var api = require('./routes/api.js');
+
+app.use('/api', api);
+
 //mongoose connection
 
 var mongoose = require('mongoose');
