@@ -18,7 +18,7 @@ app.use('/api', api);
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/angcms');
-var db = mongoose.connection;
+var db = mongoose.connecetion;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
