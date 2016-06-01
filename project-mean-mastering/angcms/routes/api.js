@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Page= require('../models/page.js');
-var adminUser= require('../models/admin-users.js');
+var Page = require('../models/page.js');
+var adminUser = require('../models/admin-users.js');
+var bcrypt = require('bcrypt-nodejs');
 
 /* User Routes. */
 
