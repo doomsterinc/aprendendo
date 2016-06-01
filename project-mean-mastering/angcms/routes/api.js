@@ -90,4 +90,23 @@ router.get('/pages/details/:url', function(request, response){
 	});
 });
 
+router.post('/add-user', function(request,response){
+	var salt, hash, password;
+	password = request.body.password;
+	salt = bcrypt.genSaltSync(10);
+	hash = bcrypt.hashSync(password,salt);
+	var adminUser = new adminUser({
+		username:request.body.username,
+		password:hash
+	});
+
+	AdminUser.save(function(err){
+		if{
+			return response.send('Admin User sucessfully created')
+		} else {
+			return.send(err);
+		}
+	});
+});
+
 module.exports = router;
