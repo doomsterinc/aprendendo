@@ -13,6 +13,7 @@ var app = express();
 var api = require('./routes/api.js');
 
 app.use('/api', api);
+app.use(express.cookieParser('secret'));
 
 //mongoose connection
 
@@ -65,7 +66,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-app.use(express.cookieParser('secret'));
 
 module.exports = app;
