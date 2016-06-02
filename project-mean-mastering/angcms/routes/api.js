@@ -109,4 +109,31 @@ router.post('/add-user', function(request,response){
 	});
 });
 
+router.post('/login', function(request, response){
+	var username = request.body.username;
+	var password = request.body.password;
+
+	AdminUser.findOne({
+		username: username
+	}, function (err, data){
+		if(err | data === null){
+			return response.send(401, "User Doesn't exist!");
+		}else{
+			var usr = data;
+			if (username == usr.username && bcrypt.compareSync(password,usr.password)){
+				request.session.regenerate(function(){
+					request.session.user = username;
+					return response.send(username);
+				});
+			} else {
+				return response.send(401, "Bad Username or Password!")
+			}
+		}
+	});
+});
+
+
+
+
+
 module.exports = router;
