@@ -1,0 +1,96 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'hexo-deployer-github',
+1 verbose cli   '--save' ]
+2 info using npm@2.14.20
+3 info using node@v4.4.0
+4 verbose install initial load of /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/package.json
+5 verbose installManyTop reading scoped package data from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/node_modules/hexo/package.json
+6 verbose installManyTop reading scoped package data from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/node_modules/hexo-deployer-git/package.json
+7 verbose installManyTop reading scoped package data from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/node_modules/hexo-generator-archive/package.json
+8 verbose installManyTop reading scoped package data from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/node_modules/hexo-generator-category/package.json
+9 verbose installManyTop reading scoped package data from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/node_modules/hexo-generator-index/package.json
+10 verbose installManyTop reading scoped package data from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/node_modules/hexo-generator-tag/package.json
+11 verbose installManyTop reading scoped package data from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/node_modules/hexo-renderer-ejs/package.json
+12 verbose installManyTop reading scoped package data from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/node_modules/hexo-renderer-marked/package.json
+13 verbose installManyTop reading scoped package data from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/node_modules/hexo-renderer-stylus/package.json
+14 verbose installManyTop reading scoped package data from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/node_modules/hexo-server/package.json
+15 verbose readDependencies loading dependencies from /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo/package.json
+16 silly cache add args [ 'hexo-deployer-github', null ]
+17 verbose cache add spec hexo-deployer-github
+18 silly cache add parsed spec Result {
+18 silly cache add   raw: 'hexo-deployer-github',
+18 silly cache add   scope: null,
+18 silly cache add   name: 'hexo-deployer-github',
+18 silly cache add   rawSpec: '',
+18 silly cache add   spec: 'latest',
+18 silly cache add   type: 'tag' }
+19 silly addNamed hexo-deployer-github@latest
+20 verbose addNamed "latest" is being treated as a dist-tag for hexo-deployer-github
+21 info addNameTag [ 'hexo-deployer-github', 'latest' ]
+22 silly mapToRegistry name hexo-deployer-github
+23 silly mapToRegistry using default registry
+24 silly mapToRegistry registry https://registry.npmjs.org/
+25 silly mapToRegistry uri https://registry.npmjs.org/hexo-deployer-github
+26 verbose addNameTag registry:https://registry.npmjs.org/hexo-deployer-github not in flight; fetching
+27 verbose request uri https://registry.npmjs.org/hexo-deployer-github
+28 verbose request no auth needed
+29 info attempt registry request try #1 at 12:06:18
+30 verbose request id f58c3827e9381e97
+31 http request GET https://registry.npmjs.org/hexo-deployer-github
+32 http 404 https://registry.npmjs.org/hexo-deployer-github
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=0',
+33 verbose headers   'content-length': '2',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Wed, 23 Mar 2016 15:06:20 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   age: '0',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-jfk1040-JFK',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1458745580.052307,VS0,VE348' }
+34 silly get cb [ 404,
+34 silly get   { 'content-type': 'application/json',
+34 silly get     'cache-control': 'max-age=0',
+34 silly get     'content-length': '2',
+34 silly get     'accept-ranges': 'bytes',
+34 silly get     date: 'Wed, 23 Mar 2016 15:06:20 GMT',
+34 silly get     via: '1.1 varnish',
+34 silly get     age: '0',
+34 silly get     connection: 'keep-alive',
+34 silly get     'x-served-by': 'cache-jfk1040-JFK',
+34 silly get     'x-cache': 'MISS',
+34 silly get     'x-cache-hits': '0',
+34 silly get     'x-timer': 'S1458745580.052307,VS0,VE348' } ]
+35 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/hexo-deployer-github
+35 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+35 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+35 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+35 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:199:22)
+35 verbose stack     at emitTwo (events.js:87:13)
+35 verbose stack     at Request.emit (events.js:172:7)
+35 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+35 verbose stack     at emitOne (events.js:82:20)
+35 verbose stack     at Request.emit (events.js:169:7)
+35 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:963:12)
+36 verbose statusCode 404
+37 verbose pkgid hexo-deployer-github
+38 verbose cwd /Users/faustino/Documents/testeprojetos/scripteste/testBlogHexo
+39 error Darwin 15.3.0
+40 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "hexo-deployer-github" "--save"
+41 error node v4.4.0
+42 error npm  v2.14.20
+43 error code E404
+44 error 404 Registry returned 404 for GET on https://registry.npmjs.org/hexo-deployer-github
+44 error 404
+44 error 404 'hexo-deployer-github' is not in the npm registry.
+44 error 404 You should bug the author to publish it (or use the name yourself!)
+44 error 404 It was specified as a dependency of 'hexo-site'
+44 error 404
+44 error 404 Note that you can also install from a
+44 error 404 tarball, folder, http url, or git url.
+45 verbose exit [ 1, true ]
