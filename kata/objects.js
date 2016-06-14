@@ -38,4 +38,13 @@ var i = 0;
 
 console.log(box[i]);
 console.log(box[1]);
-console.log(box.pop());
+//console.log(box.pop());
+console.log(box);
+
+var box = [];
+
+box['size'] = 9;
+box['0'] = 'meow';
+
+console.log(box['size']);
+console.log(box[0]);
