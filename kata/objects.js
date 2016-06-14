@@ -28,3 +28,14 @@ var testname = new Name("Maicon", "Giovani");
 
 var testname2 = new Name("Carol", "Diaz");
 console.log(testname2.fullName());
+
+var box = [];
+box[0] = true;
+box[1] = 'meow';
+box.push({hello:"hello", uou:"uou"});
+
+var i = 0;
+
+console.log(box[i]);
+console.log(box[1]);
+console.log(box.pop());
