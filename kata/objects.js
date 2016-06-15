@@ -16,49 +16,71 @@ for (var key in animal){
 	}
 };
 
-function Name(name, lastName){
-	this.name =name;
-	this.lastName = lastName;
-	this.fullName = function fullName(){
-		return fullName = this.name + " " + this.lastName;
-	};
-};
+// function Name(name, lastName){
+// 	this.name =name;
+// 	this.lastName = lastName;
+// 	this.fullName = function fullName(){
+// 		return fullName = this.name + " " + this.lastName;
+// 	};
+// };
 
-var testname = new Name("Maicon", "Giovani");
+// var testname = new Name("Maicon", "Giovani");
 
-var testname2 = new Name("Carol", "Diaz");
-console.log(testname2.fullName());
+// var testname2 = new Name("Carol", "Diaz");
+// console.log(testname2.fullName());
+
+console.log("______________________________________________________________");
+var box = [];
+box[0] = true;
+box[1] = 'meow';
+box.push({hello:"hello", uou:"uou"});
+box['size'] = 9;
+box['0'] = 'meow';
+box.push("whoooooohoo!");
+var i = 0;
+
+console.log(box[i]);
+console.log(box[1]);
+//console.log(box.pop());
+console.log(box);
 
 var box = [];
-// box[0] = true;
-// box[1] = 'meow';
-// box.push({hello:"hello", uou:"uou"});
-// box['size'] = 9;
-// box['0'] = 'meow';
-// box.push("whoooooohoo!");
-// // var i = 0;
 
-// // // console.log(box[i]);
-// // // console.log(box[1]);
-// // // //console.log(box.pop());
-// // // console.log(box);
+for (var k in box){
+	console.log(k);
+}
 
-// // //var box = [];
+console.log(box);
 
-// // for (var k in box){
-// // 	console.log(k);
-// // }
+for (var i = 0; i < box.length; i++){
+	console.log(box[i]);
+}
 
-// // // console.log(box);
-
-// for (var i = 0; i < box.length; i++){
-// 	console.log(box[i]);
-// }
-
-// console.log(box.size);
+console.log(box.size);
 
 box['0'] = "meow";
 box[3] = {'babyBox': true};
 
 console.log(box['length']);
 console.log(box);
+
+console.log("______________________________________________________________");
+
+
+var noiseArray = [];
+
+noiseArray = ["roour", "ruarrrg"];
+
+noiseArray.push("rouarggss");
+noiseArray.push({ username: 'DaffyDuck', tagline: 'Yippeee!', noises: ['quack', 'honk', 'sneeze'] });
+
+console.log(noiseArray.length);
+
+var animals = [];
+
+animals[0] = animal;
+
+var quackers = { username: 'DaffyDuck', tagline: 'Yippeee!', noises: ['quack', 'honk', 'sneeze'] };
+
+animals.push(quackers);
+console.log(animals);
