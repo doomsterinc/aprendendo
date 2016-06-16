@@ -16,6 +16,8 @@ for (var key in animal){
 	}
 };
 
+var apiKey = {name:"AIzaSyAsDsOF2ghGEdveqFX21hR-CzABUAAOekA"}
+
 // function Name(name, lastName){
 // 	this.name =name;
 // 	this.lastName = lastName;
@@ -86,3 +88,31 @@ var quackers = { username: 'DaffyDuck', tagline: 'Yippeee!', noises: ['quack', '
 
 animals.push(quackers);
 console.log(animals);
+
+console.log("______________________________________________________________");
+
+function AnimalMaker(name){
+	return {
+		speak: function(){
+			console.log("my name is ", name);
+		},
+		name: name,
+		owner: 'Mayckon Doom'
+	};
+};
+
+var myAnimal  = AnimalMaker("Cheetah");
+console.log(myAnimal);
+console.log(myAnimal.speak());
+
+var animalNames = ["thor", "bocanegra", "bob"];
+
+var farm = [];
+for (var i = 0; i < animalNames.length; i++) {
+	farm.push(AnimalMaker(animalNames[i]));
+}
+for (var i=0; i < farm.length; i++){
+	if (farm[i].speak()){
+		console.log(farm[i].speak());
+	}
+}
