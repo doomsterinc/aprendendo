@@ -69,13 +69,15 @@ console.log("______________________________________________________________");
 
 var noiseArray = [];
 
-noiseArray = ["roour", "ruarrrg"];
-
+noiseArray.unshift("roour");
 noiseArray.push("rouarggss");
+noiseArray[2]= "Sydney Brookehihi";
 noiseArray.push({ username: 'DaffyDuck', tagline: 'Yippeee!', noises: ['quack', 'honk', 'sneeze'] });
-
+noiseArray.pop();
+console.log(noiseArray);
 console.log(noiseArray.length);
-
+console.log("______________________________________________________________");
+animal.noises = noiseArray;
 var animals = [];
 
 animals[0] = animal;
