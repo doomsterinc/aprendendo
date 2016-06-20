@@ -150,9 +150,20 @@ var AnimalCreator = function(username,species,tagline,noises){
 };
 
 var sheep = AnimalCreator('Cloud', 'sheep', 'You can count on me!', ['baahhh', 'arrgg', 'chewchewchew']);
+var cow = AnimalCreator('Cuco', 'cow', 'You can count on me!', ['baahhh', 'arrgg', 'chewchewchew']);
+var llama = AnimalCreator('LOSTR', 'llama', 'You can count on me!', ['baahhh', 'arrgg', 'chewchewchew']);
 
-console.log(sheep);
+var animalsCreated = [sheep,cow,llama];
+for (var i = 0; i < animalsCreated.length; i++) {
+	console.log(animalsCreated[i]);
+}
 
 console.log("______________________________________________________________");
 
-
+var addFriend = function(animal, friend){
+	animal.friends[animal.friends.length] = friend;
+}
+addFriend(sheep, cow);
+addFriend(sheep, llama);
+console.log(sheep);
+console.log("______________________________________________________________");
