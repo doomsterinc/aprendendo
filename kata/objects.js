@@ -116,3 +116,43 @@ for (var i=0; i < farm.length; i++){
 		console.log(farm[i].speak());
 	}
 }
+
+console.log("______________________________________________________________");
+
+var AnimalTestUser = function (username) {
+	var args = arguments.length;
+	var otherArgs = [];
+	if (args > 1) {
+		for (var i = 1; i < args; i++) {
+			otherArgs.push(arguments[i]);	
+		}
+	}
+	return{
+		username: username,
+		otherArgs: otherArgs
+	};
+};
+
+var testSheep = AnimalTestUser('CottonBall', {'loves dancing': true}, [1,2,3]);
+console.log(testSheep);
+
+
+console.log("______________________________________________________________");
+
+var AnimalCreator = function(username,species,tagline,noises){
+	return{
+		username:username,
+		species:species,
+		tagline:tagline,
+		noises:noises,
+		friends: []
+	}
+};
+
+var sheep = AnimalCreator('Cloud', 'sheep', 'You can count on me!', ['baahhh', 'arrgg', 'chewchewchew']);
+
+console.log(sheep);
+
+console.log("______________________________________________________________");
+
+
