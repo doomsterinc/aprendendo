@@ -153,9 +153,9 @@ var sheep = AnimalCreator('Cloud', 'sheep', 'You can count on me!', ['baahhh', '
 var cow = AnimalCreator('Cuco', 'cow', 'You can count on me!', ['baahhh', 'arrgg', 'chewchewchew']);
 var llama = AnimalCreator('LOSTR', 'llama', 'You can count on me!', ['baahhh', 'arrgg', 'chewchewchew']);
 
-var animalsCreated = [sheep,cow,llama];
-for (var i = 0; i < animalsCreated.length; i++) {
-	console.log(animalsCreated[i]);
+var myFarm = [sheep,cow,llama];
+for (var i = 0; i < myFarm.length; i++) {
+	console.log(myFarm[i]);
 }
 
 console.log("______________________________________________________________");
@@ -165,5 +165,25 @@ var addFriend = function(animal, friend){
 }
 addFriend(sheep, cow);
 addFriend(sheep, llama);
+addFriend(cow, sheep);
+addFriend(llama, sheep);
+addFriend(cow, llama);
+addFriend(llama, cow);
+
 console.log(sheep);
+console.log("______________________________________________________________");
+
+var addMatchesArray = function(farm){
+	for (var i = 0; i < farm.length; i++) {
+		farm[i].matches = [];
+	}
+}
+
+addMatchesArray(myFarm);
+console.log(myFarm);
+
+
+
+
+
 console.log("______________________________________________________________");
