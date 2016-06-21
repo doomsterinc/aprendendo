@@ -161,7 +161,7 @@ for (var i = 0; i < animalsCreated.length; i++) {
 console.log("______________________________________________________________");
 
 var addFriend = function(animal, friend){
-	animal.friends[animal.friends.length] = friend;
+	animal.friends[animal.friends.length] = friend.username;
 }
 addFriend(sheep, cow);
 addFriend(sheep, llama);
