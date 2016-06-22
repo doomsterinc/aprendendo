@@ -133,6 +133,7 @@ var AnimalTestUser = function (username) {
 	};
 };
 
+var test2={name:"marrom", teste: 201603330992};
 var testSheep = AnimalTestUser('CottonBall', {'loves dancing': true}, [1,2,3]);
 console.log(testSheep);
 
@@ -183,7 +184,12 @@ addMatchesArray(myFarm);
 console.log(myFarm);
 
 
-
-
+var giveMatches = function(farm){
+	for(var animal in farm){
+		farm[animal].matches.push(famr[animal].friends[0]);
+	};
+};
+giveMatches(myFarm);
+console.log(myFarm[0]);
 
 console.log("______________________________________________________________");
