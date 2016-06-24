@@ -1,0 +1,16 @@
+{"servicesettings": {
+   "@name": "pizzaDatabase_settings",
+   "@id": 6142213,
+   "properties": {"property": [
+      {
+         "@value": "https://api.appery.io/rest/1/db",
+         "@path": "database_url",
+         "@description": ""
+      },
+      {
+         "@value": "",
+         "@path": "database_id",
+         "@description": ""
+      }
+   ]}
+}}
