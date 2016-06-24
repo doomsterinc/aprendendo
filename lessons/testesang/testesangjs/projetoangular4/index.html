@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+	<title>Student Application</title>
+	<script src="js/angular.js"></script>
+	<script src="js/mainApp.js"></script>
+	<script src="js/stdCtrl.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-controller="stdCtrl">
+	<h2>Students Application</h2>
+	<div ng-include="'views/main.html'"></div>
+	<div ng-include="'views/subjects.html'"></div>
+</body>
+</html>
