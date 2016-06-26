@@ -32,5 +32,8 @@ var pagamento = function(saldo_conta, total_compra){
 		console.log("parabens pela compra!");
 	}
 };
-
+var totalPagamento = function (total_compra) {
+	return "$" + total_compra.toFixed(2);
+};
+console.log(totalPagamento(total_compra));
 pagamento(saldo_conta, total_compra);
