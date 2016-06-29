@@ -82,6 +82,7 @@ def recvmsg(s):
     print ' ... received message: type = %d, ver = %04x, length = %d' % (typ, ver, len(pay))
     return typ, ver, pay
 
+
 def hit_hb(s):
     s.send(hb)
     while True:
