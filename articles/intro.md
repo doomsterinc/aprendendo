@@ -1,0 +1,17 @@
+Eu tive a honra de escrever o prefácio para o primeiro livro, Scope e fechos, de Kyle Simpson You Do not Know série JS. Exorto-vos a comprar o livro, é definitivamente vale a pena ler, não importa a sua habilidade ou experiência, mas eu também incluiu o prefácio abaixo.
+
+Quando eu era criança, eu costumava desfrutar de desmontar coisas e colocá-los juntos novamente. Telefones móveis velhos, aparelhos de som Hi-Fi e qualquer outra coisa que eu poderia chegar em minhas mãos. Eu era muito jovem para realmente usar estes dispositivos, mas sempre que se quebrou, eu instantaneamente perguntar se eu pudesse descobrir como funcionava.
+
+Lembro-me de uma vez que olha uma placa de circuito para um rádio velho. Ele tinha esse tubo longo estranho com fio de cobre enrolado em torno dele. Eu não poderia trabalhar para fora o seu propósito, mas eu imediatamente entrou em modo de pesquisa. O que isso faz? Por que é em um rádio? Ele não se parece com as outras partes da placa de circuito, por quê? Por que tem de cobre enrolado em torno dele? O que acontece se eu remover o cobre ?! Agora eu sei que era uma antena, feita por envolvimento fio de cobre em torno de uma barra de ferrite, que são frequentemente utilizados em rádios.
+
+Alguma vez você se tornar viciado em descobrir todas as respostas para cada pergunta "porquê"? A maioria das crianças fazem. Na verdade, é provavelmente o meu favorito coisa sobre crianças - seu desejo de aprender.
+
+Infelizmente, agora estou considerado um "profissional" e passar meus dias fazendo coisas. Quando eu era jovem, eu amei a ideia de um dia fazer as coisas que eu desmontou. Claro, a maioria das coisas que eu faço agora estão com JavaScript e não barras de ferrite ... mas perto o suficiente! No entanto, apesar de uma vez amando a idéia de fazer as coisas, agora eu me pego ansiando pelo desejo de descobrir as coisas. Claro - muitas vezes eu descobrir a melhor maneira de resolver um problema ou corrigir um erro, mas eu raramente ter tempo para questionar as minhas ferramentas.
+
+E é exatamente por isso que estou tão animado sobre "You Do not Know JS" série de Kyle dos livros. Porque ele está certo. Eu não sei JS. Eu uso o dia JavaScript, dia não e ter feito há muitos anos, mas eu realmente entendê-lo? Não. Claro, eu entendo muito disso e muitas vezes eu ler as especificações e as listas de discussão, mas não, eu não entendo tanto quanto meu interior 6 anos desejos que eu fiz.
+
+Âmbito e Closures, é um início brilhante para a série. É muito bem orientado para as pessoas como eu (e esperamos que você também), ele não ensina JavaScript como se você nunca usei, mas faz você percebe o quão pouco sobre o funcionamento interno você provavelmente sabe.
+
+Ele também está saindo no momento perfeito, ES6 está finalmente se estabelecer e implementação em todos os navegadores está indo bem. Se você ainda não tenho tempo para aprender os novos recursos (como vamos e const), este livro será uma grande introdução.
+
+Portanto, espero que você aproveite este livro, mas mais ainda essa maneira de pensar criticamente sobre como cada pedaço minúsculo das obras de linguagem, vai rastejar em sua mentalidade e fluxo de trabalho geral de Kyle. Em vez de apenas usando a antena, descobrir como e por que ela funciona.
