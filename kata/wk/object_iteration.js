@@ -57,10 +57,27 @@ var collectionCopy = JSON.parse(JSON.stringify(collection));
 
 // Only change code below this line
 function updateRecords(id, prop, value) {
+  idin = String(id);
+  if(value == ""){
+    collectionCopy=collectionCopy;
+  }else if(prop === "tracks" && !collectionCopy[idin][prop]){
+    collectionCopy[idin][prop] = [value];
+  } else if(prop === "tracks"){
+    collectionCopy[idin][prop].push(value);
+  }else if (collectionCopy[idin][prop]){
+      collectionCopy[idin][prop] = value;
+  }else{
+    collectionCopy[idin][prop] = value;
+  }
+  // console.log(collectionCopy[idin]);
 
 
-  return collection;
+  return collectionCopy;
 }
 
 // Alter values below to test your code
-updateRecords(5439, "artist", "ABBA");
+updateRecords(5439, "tracks", "Take a Chance on Me");
+updateRecords(2548, "artist", "");
+updateRecords(2468, "tracks", "Free");
+updateRecords(2548, "tracks", "");
+console.log(collectionCopy);
