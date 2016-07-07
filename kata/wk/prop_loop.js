@@ -30,14 +30,15 @@ var contacts = [
 var contactsCopy = JSON.parse(JSON.stringify(contacts));
 
 function lookUpProfile(firstName, prop){
-// Only change code below this line
-for(var i=1;i <= contactsCopy.length; i++ ){
-  for (var j = 0; j < contactsCopy[i].length; j++) {
-    console(contactsCopy[i][j])
-  }
-}
-// Only change code above this line
-}
+for(var i=0;i <= contactsCopy.length; i++ ){
+  for (x in contactsCopy[i]) {
+
+    if (contactsCopy[i][x] === firstName) {
+      console.log(contactsCopy[i][x]);
+    }
+  };
+};
+};
 
 // Change these values to test your function
 lookUpProfile("Akira", "likes");
