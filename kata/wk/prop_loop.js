@@ -29,16 +29,18 @@ var contacts = [
 
 var contactsCopy = JSON.parse(JSON.stringify(contacts));
 
-function lookUpProfile(firstName, prop){
-for(var i=0;i <= contactsCopy.length; i++ ){
-  for (x in contactsCopy[i]) {
-
-    if (contactsCopy[i][x] === firstName) {
-      console.log(contactsCopy[i][x]);
+function lookUpProfile( firstName, prop ){
+  for( var i = 0; i < contacts.length; i++ ){
+    if( firstName == contacts[i].firstName ) {
+      if( contacts[i].hasOwnProperty( prop ) ) {
+        return contacts[i][prop];
+      } else {
+        return "No such property";
+      }
     }
-  };
-};
-};
+  }
+  return "No such contact";
+}
 
 // Change these values to test your function
-lookUpProfile("Akira", "likes");
+console.log(lookUpProfile("Holmes", "likes"));
