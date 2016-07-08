@@ -195,6 +195,8 @@
       if (arguments.length < 3) {
         memo = obj[keys ? keys[index] : index];
         index += dir;
+        memo = obj[keys ? keys[index] : index];
+        index += dir;
       }
       return iterator(obj, iteratee, memo, keys, index, length);
     };
