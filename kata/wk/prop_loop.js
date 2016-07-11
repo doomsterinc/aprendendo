@@ -32,9 +32,8 @@ var contactsCopy = JSON.parse(JSON.stringify(contacts));
 function lookUpProfile(firstName, prop){
 // Only change code below this line
 for(var i=1;i <= contactsCopy.length; i++ ){
-  for (var j = 0; j < contactsCopy[i].length; j++) {
-    console(contactsCopy[i][j])
-  }
+
+    console.log(contactsCopy[i][1]);
 }
 // Only change code above this line
 }
