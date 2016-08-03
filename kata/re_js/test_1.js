@@ -16,10 +16,9 @@ var changeDetails = (function(){
 	};
 	var doAgeIncrease = function(step){
 		for(var i = 0; i <= step; i++){
-			console.log(global.age);
-			global.age += 1;
+			GLOBAL.age += 1;
 		};
-		console.log("5: ", global.age);
+		console.log("5: ", GLOBAL.age);
 	},
 	increaseAge = function(step){
 		var  waitForIncrease = setTimeout(function(){
