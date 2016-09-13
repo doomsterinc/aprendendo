@@ -1,5 +1,0 @@
-{"jsasset": {
-   "@name": "navigateTo",
-   "@id": "E0B16530-E5D6-8C4C-7CE1-DF5F1ED09B18",
-   "@script": "define( [ 'require' ], function( require ){\n\n    return [{\n        type: 'directive',\n        name: 'navigateTo',\n        deps: ['Apperyio', directive_navigateTo]\n    }];\n\n    function directive_navigateTo (Apperyio) {\n        return {\n            restrict: 'A',\n            link: function (scope, el, attrs) {\n                el.bind('click tap', function(){\n                    var arg, options = {};\n                    for ( var key in attrs ) {\n                        if ( key.indexOf('navigateTo') == 0 && key.length > 'navigateTo'.length ){\n                            arg = key.replace( 'navigateTo', '' );\n                            options[arg] = attrs[key];\n                        }\n                    }\n                    scope.$apply( function(){\n                        Apperyio.navigateTo( attrs.navigateTo, options );\n                    } );\n                });\n            }\n        };\n    }\n\n});\n"
-}}
