@@ -1,7 +1,0 @@
-#!/bin/bash -ue
-
-rm -f $OPENSHIFT_HOMEDIR/.psqlrc
-rm -f $OPENSHIFT_HOMEDIR/.pgpass
-find $OPENSHIFT_DATA_DIR -type f -name ".psql_history*" -exec rm {} \;
-
-rm -rf $OPENSHIFT_LOG_DIR/postgresql.log*
